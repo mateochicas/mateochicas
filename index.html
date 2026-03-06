@@ -1,12 +1,11 @@
-﻿<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateo Alexander Chicas Villavicencio | Portafolio Profesional</title>
-    <link rel="shortcut icon" href="./scr/nav-icon.svg" />
+    <title>Mateo Alexander Chicas Villavicencio | Portafolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -14,11 +13,16 @@
             theme: {
                 extend: {
                     colors: {
-                        navy: { DEFAULT: '#1e3a5f' },
-                        brand: {
-                            blue: '#3b82f6',
-                            dark: '#0a0f1a'
+                        apple: {
+                            gray: '#f5f5f7',
+                            dark: '#1d1d1f',
+                            blue: '#0066cc',
+                            card: 'rgba(255, 255, 255, 0.8)',
+                            cardDark: 'rgba(29, 29, 31, 0.8)'
                         }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
                     }
                 }
             }
@@ -26,151 +30,157 @@
     </script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .glass { @apply bg-white/70 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200 dark:border-slate-800; }
+        body { 
+            background-color: #ffffff;
+            color: #1d1d1f;
+            -webkit-font-smoothing: antialiased;
+        }
         
         @media (prefers-color-scheme: dark) {
-            body { background-color: #0a0f1a; }
-        }
-        @media (prefers-color-scheme: light) {
-            body { background-color: #f8fafc; }
+            body { background-color: #000000; color: #f5f5f7; }
         }
 
-        /* FIX DEFINITIVO PARA CORTE DE TEXTO */
-        .text-gradient {
-            background: linear-gradient(135deg, #1e3a5f 0%, #3b82f6 100%);
+        .glass-nav {
+            backdrop-filter: saturate(180%) blur(20px);
+            background-color: rgba(255, 255, 255, 0.72);
+        }
+        @media (prefers-color-scheme: dark) {
+            .glass-nav { background-color: rgba(0, 0, 0, 0.72); }
+        }
+
+        .apple-card {
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .apple-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(180deg, #1d1d1f 0%, #434343 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block;
-            /* El padding lateral evita que la cursiva se corte en los bordes del span */
-            padding-right: 0.15em; 
-            padding-bottom: 0.1em;
-            margin-right: -0.1em;
-            line-height: 1.1;
         }
-        
         @media (prefers-color-scheme: dark) {
-            .text-gradient {
-                background: linear-gradient(135deg, #ffffff 0%, #60a5fa 100%);
+            .hero-gradient {
+                background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
         }
 
-        h1 {
-            line-height: 1.2 !important;
-            overflow: visible !important;
+        .fade-in {
+            animation: fadeIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
     </style>
 </head>
-<body class="text-slate-900 dark:text-slate-100 antialiased">
+<body class="selection:bg-blue-100 dark:selection:bg-blue-900">
 
-    <!-- Navbar Minimalista -->
-    <nav class="fixed top-0 w-full z-50 glass border-b">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <img src="./scr/nav-icon.svg" alt="Logo" class="h-8">
-                <span class="text-xl font-extrabold tracking-tighter uppercase">Mateo Chicas</span>
+    <!-- Navbar Estilo Apple -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-black/5 dark:border-white/5">
+        <div class="max-w-[1200px] mx-auto px-6 h-12 flex justify-between items-center">
+            <div class="flex items-center gap-8">
+                <svg class="w-5 h-5 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="hidden md:flex gap-6 text-[12px] font-normal tracking-tight opacity-70">
+                    <a href="#" class="hover:opacity-100 transition-opacity">Inicio</a>
+                    <a href="#proyectos" class="hover:opacity-100 transition-opacity">Proyectos</a>
+                    <a href="#experiencia" class="hover:opacity-100 transition-opacity">Experiencia</a>
+                </div>
             </div>
-            <div class="flex items-center gap-6">
-                <a href="mailto:info@mateochicas.com" class="hidden md:block text-sm font-semibold hover:text-blue-500 transition-colors">info@mateochicas.com</a>
-                <a href="mailto:info@mateochicas.com" class="bg-navy dark:bg-blue-600 text-white px-5 py-2 rounded-xl text-sm font-bold shadow-lg shadow-blue-500/20 hover:scale-105 transition-transform">
-                    Contactar
-                </a>
-            </div>
+            <a href="mailto:info@mateochicas.com" class="text-[12px] bg-apple-blue text-white px-3 py-1 rounded-full font-medium hover:bg-blue-600 transition-colors">
+                Contactar
+            </a>
         </div>
     </nav>
 
-    <main class="pt-32">
+    <main class="pt-24 md:pt-44">
         <!-- Hero Section -->
-        <header class="max-w-7xl mx-auto px-6 mb-24">
-            <div class="max-w-4xl">
-                <h1 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter overflow-visible">
-                    ¿Buscas <span class="text-gradient italic font-light">XP?</span>
+        <header class="max-w-[1200px] mx-auto px-6 mb-32 text-center md:text-left">
+            <div class="max-w-4xl fade-in">
+                <h1 class="text-5xl md:text-[84px] font-bold tracking-[-0.03em] mb-6 leading-[1.1] hero-gradient">
+                    ¿Buscas <span class="italic font-normal">XP?</span>
                 </h1>
-                <p class="text-2xl md:text-3xl font-bold mb-6 text-navy dark:text-white">
+                <p class="text-xl md:text-3xl font-semibold tracking-tight mb-8 opacity-90">
                     Mateo Alexander Chicas Villavicencio
                 </p>
-                <p class="text-xl text-slate-500 dark:text-slate-400 max-w-2xl font-medium leading-relaxed">
-                    Estratega especializado en desarrollo de software nativo, inteligencia artificial y diseño. Enfocado en la creación de herramientas que priorizan la soberanía tecnológica y el control absoluto del hardware.
+                <p class="text-lg md:text-xl text-[#86868b] max-w-2xl font-medium leading-relaxed">
+                    Estratega especializado en desarrollo de software nativo, inteligencia artificial y diseño. Enfocado en la creación de herramientas de <span class="text-apple-blue">soberanía tecnológica</span>.
                 </p>
             </div>
         </header>
 
-        <!-- Sección Destacada: Proyecto Hug-Oh! -->
-        <section class="max-w-7xl mx-auto px-6 mb-24">
-            <div class="glass p-1 rounded-[2.5rem] overflow-hidden">
-                <div class="bg-white dark:bg-slate-900 rounded-[2.2rem] p-8 md:p-12 flex flex-col md:flex-row gap-12 items-center">
-                    <div class="flex-1">
-                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-500 text-[10px] font-bold uppercase tracking-widest mb-6 border border-blue-500/20">
-                            Impulsando negocios locales
-                        </div>
-                        <h2 class="text-4xl md:text-5xl font-black mb-6 tracking-tighter">Hug-Oh! Platform</h2>
-                        <p class="text-lg text-slate-500 dark:text-slate-400 mb-8 leading-relaxed">
-                            Proporciono herramientas profesionales para que los negocios locales operen con <span class="text-navy dark:text-white font-bold">soberanía tecnológica</span>. Hug-Oh! es una plataforma empresarial local, rápida y privada diseñada con <span class="text-navy dark:text-white font-bold">Electron</span> para dar control absoluto sobre el hardware.
+        <!-- Proyecto Principal: Estilo Product Landing -->
+        <section id="proyectos" class="max-w-[1200px] mx-auto px-6 mb-16 fade-in delay-1">
+            <div class="bg-apple-gray dark:bg-apple-dark rounded-[32px] overflow-hidden apple-card border border-black/5 dark:border-white/5">
+                <div class="p-10 md:p-20 flex flex-col md:flex-row items-center gap-12">
+                    <div class="flex-1 order-2 md:order-1 text-center md:text-left">
+                        <span class="text-apple-blue text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Soberanía Digital</span>
+                        <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">Hug-Oh! Platform</h2>
+                        <p class="text-lg text-[#86868b] mb-10 leading-relaxed max-w-lg">
+                            Una infraestructura local, rápida y privada diseñada para dar control absoluto sobre el hardware. Desarrollada con Electron para maximizar la eficiencia empresarial.
                         </p>
-                        <a href="https://hug-oh.com/" target="_blank" class="inline-flex items-center gap-2 text-blue-500 font-bold hover:gap-4 transition-all">
-                            Visitar sitio oficial <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        <a href="https://hug-oh.com/" target="_blank" class="inline-flex items-center gap-1 text-apple-blue text-lg font-medium hover:underline decoration-2 underline-offset-4">
+                            Saber más
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </a>
                     </div>
-                    <div class="flex-1 w-full max-w-md">
-                        <div class="aspect-square glass rounded-3xl flex items-center justify-center p-12">
-                            <img src="./scr/nav-icon.svg" alt="Logo de Proyecto" class="w-full h-auto drop-shadow-2xl opacity-80">
+                    <div class="flex-1 order-1 md:order-2 w-full flex justify-center">
+                        <div class="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center bg-white dark:bg-black/20 rounded-[40px] shadow-2xl">
+                             <svg class="w-32 h-32 text-apple-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" />
+                                <path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" />
+                             </svg>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Grid de Experiencia Profesional -->
-        <section class="max-w-7xl mx-auto px-6 pb-32">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Bento Grid de Servicios -->
+        <section id="experiencia" class="max-w-[1200px] mx-auto px-6 pb-40 fade-in delay-2">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
                 
-                <!-- Col 1: Desarrollo -->
-                <div class="glass p-8 rounded-3xl flex flex-col justify-between hover:border-blue-500/50 transition-colors">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-4 tracking-tight text-navy dark:text-white uppercase">Software & Apps</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                            Especialista en arquitecturas robustas y aplicaciones de escritorio. Desarrollo de soluciones locales optimizadas para la velocidad y la privacidad.
-                        </p>
-                    </div>
-                    <div class="mt-8 flex flex-wrap gap-2">
-                        <span class="text-[10px] font-bold border px-2 py-1 rounded-md opacity-60 uppercase">Electron</span>
-                        <span class="text-[10px] font-bold border px-2 py-1 rounded-md opacity-60 uppercase">React</span>
-                        <span class="text-[10px] font-bold border px-2 py-1 rounded-md opacity-60 uppercase">Node JS</span>
-                    </div>
-                </div>
-
-                <!-- Col 2: IA & Marketing -->
-                <div class="glass p-8 rounded-3xl flex flex-col justify-between bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-800">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-4 tracking-tight text-navy dark:text-white uppercase">IA & Marketing</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                            Integración estratégica de modelos inteligentes para optimizar procesos comerciales y mejorar el posicionamiento digital.
-                        </p>
-                    </div>
-                    <div class="mt-8 flex gap-2">
-                        <div class="h-1 flex-1 bg-blue-500 rounded-full"></div>
-                        <div class="h-1 flex-1 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
-                    </div>
-                </div>
-
-                <!-- Col 3: Audiovisual -->
-                <div class="glass p-8 rounded-3xl">
-                    <h3 class="text-2xl font-bold mb-4 tracking-tight text-navy dark:text-white uppercase">Audiovisual</h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Producción técnica para medios de entretenimiento y videojuegos. Narrativa inmersiva y diseño sonoro profesional.
+                <!-- Col 1 -->
+                <div class="md:col-span-4 bg-apple-gray dark:bg-apple-dark p-10 rounded-[32px] apple-card border border-black/5 dark:border-white/5">
+                    <h3 class="text-2xl font-bold mb-4 tracking-tight">Software</h3>
+                    <p class="text-[#86868b] text-sm leading-relaxed mb-8">
+                        Arquitecturas nativas para escritorio optimizadas para alto rendimiento.
                     </p>
-                    <div class="mt-8 text-4xl font-black opacity-5 tracking-tighter uppercase">Digital Media</div>
+                    <div class="flex flex-wrap gap-2 pt-4">
+                        <span class="text-[10px] font-semibold bg-black/5 dark:bg-white/10 px-3 py-1 rounded-full uppercase">Electron</span>
+                        <span class="text-[10px] font-semibold bg-black/5 dark:bg-white/10 px-3 py-1 rounded-full uppercase">React</span>
+                    </div>
                 </div>
 
-                <!-- Liderazgo -->
-                <div class="md:col-span-3 glass p-10 rounded-3xl flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                    <div>
-                        <h3 class="text-3xl font-black mb-2 tracking-tighter uppercase">Liderazgo & Gestión</h3>
-                        <p class="text-slate-500 dark:text-slate-400">Dirección de equipos técnicos y creativos bajo estándares de calidad y metodologías eficientes.</p>
+                <!-- Col 2 -->
+                <div class="md:col-span-8 bg-apple-gray dark:bg-apple-dark p-10 rounded-[32px] apple-card border border-black/5 dark:border-white/5 flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold mb-4 tracking-tight">IA & Marketing</h3>
+                        <p class="text-[#86868b] text-sm leading-relaxed">
+                            Integración de modelos generativos para automatización de workflows y posicionamiento estratégico de marca en entornos digitales competitivos.
+                        </p>
                     </div>
-                    <div class="mt-6 md:mt-0 px-8 py-3 bg-navy dark:bg-white text-white dark:text-navy rounded-2xl font-black text-sm uppercase tracking-widest">
+                    <div class="w-full md:w-48 h-1 bg-black/10 dark:bg-white/10 rounded-full relative overflow-hidden">
+                        <div class="absolute inset-0 bg-apple-blue w-2/3"></div>
+                    </div>
+                </div>
+
+                <!-- Col 3: Liderazgo Full Width -->
+                <div class="md:col-span-12 bg-apple-gray dark:bg-apple-dark p-10 md:p-14 rounded-[32px] apple-card border border-black/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-2 tracking-tight">Liderazgo & Gestión</h3>
+                        <p class="text-[#86868b] text-lg">Dirección de equipos técnicos bajo estándares de excelencia operativa.</p>
+                    </div>
+                    <div class="mt-8 md:mt-0 inline-block px-10 py-4 bg-black dark:bg-white text-white dark:text-black rounded-full font-bold text-sm tracking-tight transition-transform hover:scale-105 cursor-default">
                         Team Lead
                     </div>
                 </div>
@@ -179,14 +189,19 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="py-16 border-t border-slate-200 dark:border-slate-800 text-center">
-        <div class="flex justify-center items-center gap-2 opacity-50 mb-6">
-            <img src="./scr/nav-icon.svg" alt="Logo" class="h-6 grayscale">
-            <span class="font-bold text-sm tracking-tighter uppercase">Mateo Alexander Chicas Villavicencio</span>
-        </div>
-        <div class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.4em]">
-            Estrategia • Diseño • Desarrollo • 2026 • Electron Specialist
+    <!-- Footer Estilo Apple Support -->
+    <footer class="bg-apple-gray dark:bg-apple-dark py-20 px-6 border-t border-black/5 dark:border-white/5">
+        <div class="max-w-[1200px] mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                <div class="opacity-40 text-xs font-medium leading-loose max-w-xl">
+                    Copyright © 2026 Mateo Alexander Chicas Villavicencio. Todos los derechos reservados. 
+                    Apple, el logo de Apple y San Francisco son marcas registradas. Este portafolio es un tributo al diseño minimalista y funcional. 
+                    Electron Specialist • Soberanía Tecnológica • Estrategia Digital.
+                </div>
+                <div class="flex gap-6 text-[12px] font-semibold opacity-60">
+                    <a href="mailto:info@mateochicas.com" class="hover:text-apple-blue hover:opacity-100 transition-all">Email</a>
+                </div>
+            </div>
         </div>
     </footer>
 
