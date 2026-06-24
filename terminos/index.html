@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Términos y Condiciones Legales | Mateo Chicas</title>
-    <link rel="icon" href="/src/nav-icon-black.png" media="(prefers-color-scheme: light)" />
-<link rel="icon" href="/src/nav-icon-white.png" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" id="favicon" href="/src/nav-icon-black.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -14,17 +13,30 @@
         }
     </script>
     <script>
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // Detect system preference and apply dark class
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    }
+    // Listen for changes and update favicon
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches) {
             document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
-    </script>
+        updateFavicon();
+    });
+    function updateFavicon() {
+        const favicon = document.getElementById('favicon');
+        if (document.documentElement.classList.contains('dark')) {
+            favicon.href = '/src/nav-icon-white.png';
+        } else {
+            favicon.href = '/src/nav-icon-black.png';
+        }
+    }
+    // Initial call to set correct icon
+    updateFavicon();
+</script>
     <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
 
     <style>
