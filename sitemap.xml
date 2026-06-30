@@ -9,15 +9,31 @@
     <priority>1.00</priority>
   </url>
 
-  <!-- Herramientas (Tools) -->
+  <!-- Servicios Profesionales -->
   <url>
-    <loc>https://www.mateochicas.com/tools/barcode/</loc>
+    <loc>https://www.mateochicas.com/pages/services/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Directorio de Herramientas (Sección Principal) -->
+  <url>
+    <loc>https://www.mateochicas.com/tools/</loc>
+    <lastmod>2026-06-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Herramientas Individuales -->
+  <url>
+    <loc>https://www.mateochicas.com/tools/qr/</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.mateochicas.com/tools/qr/</loc>
+    <loc>https://www.mateochicas.com/tools/barcode/</loc>
     <lastmod>2026-06-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
@@ -29,13 +45,7 @@
     <priority>0.80</priority>
   </url>
 
-  <!-- Páginas Legales / Servicios -->
-  <url>
-    <loc>https://www.mateochicas.com/pages/services/</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.60</priority>
-  </url>
+  <!-- Páginas Legales -->
   <url>
     <loc>https://www.mateochicas.com/pages/terms/</loc>
     <lastmod>2026-05-30</lastmod>

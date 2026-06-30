@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8Q819MR8K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-S8Q819MR8K');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9607008311974097"
+        crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-9607008311974097">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="seo-title">Mateo Chicas | Convertidor de Imágenes Premium</title>
+    <meta name="description" id="seo-description"
+        content="Convierte y optimiza imágenes por lote a formatos PNG, JPEG, WebP, AVIF, BMP y ICO de manera instantánea, privada y 100% local.">
+    <meta name="keywords"
+        content="Mateo Chicas, Mateo Alexander Chicas Villavicencio, convertidor de imagenes, optimizar fotos, png a webp, jpg a webp, convertidor imagenes lote gratis, png a jpg, webp a png, creador de ico">
+    <link rel="canonical" href="https://www.mateochicas.com/tools/image-converter/">
+    <link rel="icon" type="image/png" id="favicon" href="/src/favicon/nav-icon-black.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateFavicon();
+        });
+        function updateFavicon() {
+            const favicon = document.getElementById('favicon');
+            if (favicon) {
+                if (document.documentElement.classList.contains('dark')) {
+                    favicon.href = '/src/favicon/nav-icon-white.png';
+                } else {
+                    favicon.href = '/src/favicon/nav-icon-black.png';
+                }
+            }
+        }
+        window.addEventListener('DOMContentLoaded', updateFavicon);
+    </script>
+
+    <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- JSZip para permitir descargas completas por lote en formato .ZIP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <style>
+        :root {
+            --apple-blue: #0071e3;
+            --apple-dark: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-border: #d2d2d7;
+        }
+
+        * {
+            font-family: 'Google Sans', sans-serif !important;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f7;
+            color: var(--apple-dark);
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
+        }
+
+        .dark body {
+            background-color: #000000;
+            color: #f5f5f7;
+        }
+
+        .apple-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            font-size: 12px;
+            color: var(--apple-dark);
+        }
+
+        .dark .apple-nav {
+            background: rgba(0, 0, 0, 0.82);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: #f5f5f7;
+        }
+
+        .link-apple {
+            color: var(--apple-blue);
+            text-decoration: none;
+        }
+
+        .link-apple:hover {
+            text-decoration: underline;
+        }
+
+        .text-hero {
+            font-size: clamp(28px, 4.5vw, 38px);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.022em;
+        }
+
+        /* Tarjeta principal estilo flotante refinado */
+        .premium-card {
+            background-color: #ffffff;
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .dark .premium-card {
+            background-color: #161617;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Control segmentado Apple ultra-limpio */
+        .segmented-control {
+            background: rgba(0, 0, 0, 0.04);
+            padding: 3px;
+            border-radius: 9999px;
+            display: flex;
+            width: 100%;
+        }
+
+        .dark .segmented-control {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .segment-btn {
+            flex: 1;
+            padding: 8px 12px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 9999px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--apple-gray);
+            text-align: center;
+        }
+
+        .segment-btn.active {
+            background: #ffffff;
+            color: var(--apple-dark);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .dark .segment-btn.active {
+            background: #2d2d2e;
+            color: #f5f5f7;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dropzone integrado y minimalista */
+        .dropzone-container {
+            border: 1px dashed rgba(0, 0, 0, 0.15);
+            background: rgba(0, 0, 0, 0.01);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dark .dropzone-container {
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .dropzone-container.dragover {
+            border-color: var(--apple-blue);
+            background: rgba(0, 113, 227, 0.03);
+            transform: scale(1.005);
+        }
+
+        /* Estilización moderna del Slider */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 4px;
+            border-radius: 9999px;
+            background: rgba(0, 0, 0, 0.1);
+            outline: none;
+        }
+
+        .dark input[type="range"] {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--apple-blue);
+            cursor: pointer;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+            transition: transform 0.15s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 9999px;
+        }
+
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navegación -->
+    <nav class="apple-nav">
+        <div class="max-w-5xl w-full px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <a href="/index.html">
+                    <img src="/src/icons/logo.svg" alt="Mateo Chicas" class="h-16 w-16 dark:invert"
+                        onerror="this.src='https://placehold.co/100x40/000000/FFFFFF?text=Mateo'">
+                </a>
+            </div>
+            <div class="flex gap-6 items-center font-normal">
+                <a href="/index.html#servicios" class="hover:opacity-70 transition-opacity">Servicios</a>
+                <a href="/index.html#herramientas" class="hover:opacity-70 transition-opacity">Herramientas</a>
+                <a href="/index.html#pagar" class="hover:opacity-70 transition-opacity">Pagar</a>
+                <a href="https://www.hug-oh.com" target="_blank" class="link-apple font-medium">Hug-Oh!</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20 px-4 max-w-2xl mx-auto">
+
+        <!-- Selector de herramientas rápidas (SEO indexable) -->
+        <div class="mb-8 flex flex-col gap-2">
+            <span class="text-[10px] font-bold text-[#86868b] uppercase tracking-wider text-center">Herramientas de
+                Conversión</span>
+            <div class="flex gap-1.5 overflow-x-auto pb-2 justify-start sm:justify-center custom-scrollbar">
+                <button onclick="setToolMode('general')"
+                    class="tool-tab-btn px-3 py-1.5 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-300 whitespace-nowrap transition-all"
+                    id="tab-general">
+                    Convertidor General
+                </button>
+                <button onclick="setToolMode('png-to-webp')"
+                    class="tool-tab-btn px-3 py-1.5 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-300 whitespace-nowrap transition-all"
+                    id="tab-png-to-webp">
+                    PNG a WebP
+                </button>
+                <button onclick="setToolMode('jpg-to-webp')"
+                    class="tool-tab-btn px-3 py-1.5 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-300 whitespace-nowrap transition-all"
+                    id="tab-jpg-to-webp">
+                    JPG a WebP
+                </button>
+                <button onclick="setToolMode('png-to-jpg')"
+                    class="tool-tab-btn px-3 py-1.5 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-300 whitespace-nowrap transition-all"
+                    id="tab-png-to-jpg">
+                    PNG a JPG
+                </button>
+                <button onclick="setToolMode('image-to-ico')"
+                    class="tool-tab-btn px-3 py-1.5 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-full text-xs font-medium text-neutral-600 dark:text-neutral-300 whitespace-nowrap transition-all"
+                    id="tab-image-to-ico">
+                    Imagen a ICO
+                </button>
+            </div>
+        </div>
+
+        <!-- Hero de la herramienta dinámico -->
+        <div class="text-center mb-8">
+            <h1 id="main-hero-title" class="text-hero mb-3 text-[#1d1d1f] dark:text-[#f5f5f7]">Convertidor de Imágenes
+            </h1>
+            <p id="main-hero-desc" class="text-sm text-[#86868b] max-w-md mx-auto">Optimiza y convierte tus fotos
+                localmente, manteniendo tu privacidad intacta.</p>
+        </div>
+
+        <!-- Tarjeta principal del convertidor -->
+        <div class="premium-card p-6 md:p-8 flex flex-col gap-6">
+
+            <!-- Selector de Formato de Salida -->
+            <div class="flex flex-col gap-2">
+                <span class="text-[11px] font-semibold text-[#86868b] uppercase tracking-wider px-1">Convertir a</span>
+                <div class="segmented-control" id="format-segmented">
+                    <button class="segment-btn active" data-format="image/webp"
+                        onclick="changeGlobalFormat('image/webp')">WebP</button>
+                    <button class="segment-btn" data-format="image/jpeg"
+                        onclick="changeGlobalFormat('image/jpeg')">JPG</button>
+                    <button class="segment-btn" data-format="image/png"
+                        onclick="changeGlobalFormat('image/png')">PNG</button>
+                    <button class="segment-btn" data-format="image/x-icon"
+                        onclick="changeGlobalFormat('image/x-icon')">ICO</button>
+                    <button class="segment-btn" data-format="image/bmp"
+                        onclick="changeGlobalFormat('image/bmp')">BMP</button>
+                </div>
+            </div>
+
+            <!-- Área de Carga Dropzone -->
+            <div id="dropzone"
+                class="dropzone-container rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer relative min-h-[140px]">
+                <input type="file" id="image-input" multiple accept="image/*"
+                    class="absolute inset-0 opacity-0 cursor-pointer w-full h-full">
+                <div class="flex flex-col items-center gap-2 pointer-events-none">
+                    <div class="text-[#0071e3] mb-1">
+                        <i data-lucide="cloud-upload" class="w-7 h-7"></i>
+                    </div>
+                    <div>
+                        <span id="dropzone-text"
+                            class="text-xs font-medium text-[#1d1d1f] dark:text-[#f5f5f7] block">Arrastra tus fotos aquí
+                            o examina</span>
+                    </div>
+                    <span id="dropzone-subtext" class="text-[10px] text-neutral-400 dark:text-neutral-500">Soporta PNG,
+                        JPG, WEBP, GIF, BMP, AVIF</span>
+                </div>
+            </div>
+
+            <!-- Slider de calidad ultralimpio -->
+            <div id="quality-container"
+                class="bg-neutral-50 dark:bg-neutral-900/40 px-4 py-3.5 rounded-xl border border-neutral-100 dark:border-neutral-800 flex flex-col gap-2.5">
+                <div class="flex justify-between items-center">
+                    <span class="text-[11px] font-semibold text-[#86868b] uppercase tracking-wider">Calidad de
+                        salida</span>
+                    <span id="quality-display" class="text-xs font-bold text-[#0071e3]">85%</span>
+                </div>
+                <input type="range" id="quality-slider" min="5" max="100" value="85" class="w-full"
+                    oninput="updateQuality(this.value)">
+            </div>
+
+            <!-- Lista de Archivos y Contenedor de cola -->
+            <div class="flex flex-col gap-3">
+                <div class="flex justify-between items-center px-1">
+                    <h3 class="text-[11px] font-semibold text-[#86868b] uppercase tracking-wider">Cola de Archivos
+                        (<span id="files-count">0</span>)</h3>
+                    <button id="clear-all-btn" class="text-[11px] text-red-500 hover:underline hidden"
+                        onclick="clearAllFiles()">Limpiar lista</button>
+                </div>
+
+                <!-- Lista de imágenes cargadas -->
+                <div id="files-list"
+                    class="flex flex-col divide-y divide-neutral-100 dark:divide-neutral-800/80 max-h-[320px] overflow-y-auto custom-scrollbar">
+                    <!-- Estado vacío -->
+                    <div id="empty-state"
+                        class="flex flex-col items-center justify-center text-center py-8 text-neutral-400">
+                        <i data-lucide="inbox" class="w-6 h-6 mb-2 opacity-40"></i>
+                        <p class="text-xs">No has seleccionado imágenes todavía.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen de Ahorros -->
+            <div id="savings-card"
+                class="bg-[#0071e3]/5 dark:bg-[#0071e3]/10 p-3 rounded-xl border border-[#0071e3]/10 flex justify-between items-center hidden transition-all">
+                <div class="flex items-center gap-2 text-[#0071e3]">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                    <span class="text-xs font-medium">Ahorro total estimado:</span>
+                </div>
+                <span id="savings-percentage" class="text-xs font-bold text-[#0071e3]">-0%</span>
+            </div>
+
+            <!-- Botones de Acción Globales -->
+            <div id="global-actions" class="hidden flex flex-col sm:flex-row gap-2.5 mt-2">
+                <button
+                    class="flex-1 bg-[#0071e3] hover:bg-[#0077ed] text-white rounded-full py-2.5 text-xs font-medium transition-colors flex items-center justify-center gap-1.5 shadow-sm"
+                    onclick="convertAll()">
+                    <span>Convertir todo</span>
+                    <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                </button>
+                <button id="download-zip-btn"
+                    class="flex-1 border border-[#0071e3]/30 text-[#0071e3] hover:bg-[#0071e3]/5 dark:text-blue-400 rounded-full py-2.5 text-xs font-medium transition-all flex items-center justify-center gap-1.5 hidden"
+                    onclick="downloadAllAsZip()">
+                    <i data-lucide="archive" class="w-3.5 h-3.5"></i>
+                    <span>Descargar todo (.ZIP)</span>
+                </button>
+            </div>
+
+        </div>
+
+        <!-- Sección de Texto SEO Dinámico (Atraerá visitas de Google de forma orgánica) -->
+        <section
+            class="mt-12 bg-white dark:bg-[#161617] rounded-3xl p-6 md:p-8 border border-neutral-200/50 dark:border-neutral-800/50">
+            <h2 id="seo-heading" class="text-lg font-semibold mb-3 text-neutral-800 dark:text-neutral-200">Convertir y
+                optimizar imágenes sin perder calidad</h2>
+            <div id="seo-text" class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed space-y-4">
+                <p>Nuestra herramienta web te permite convertir múltiples imágenes en lote con la mayor velocidad
+                    gracias a la aceleración por hardware de tu propio navegador. El procesamiento es completamente
+                    local y privado, lo que significa que tus fotos nunca se suben a servidores externos.</p>
+                <p>Optimizar el tamaño de tus archivos JPEG, PNG o WebP es fundamental para acelerar la velocidad de
+                    carga de tus páginas web y mejorar el rendimiento SEO general.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#f5f5f7] dark:bg-[#1d1d1f] py-12 px-6 text-center text-sm text-[#86868b]">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <p>Copyright © 2026 Mateo Alexander Chicas Villavicencio. Todos los derechos reservados.</p>
+            <div class="flex gap-4">
+                <a href="https://www.hug-oh.com" target="_blank"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Hug-Oh!</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/terms/index.html" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Términos</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="mailto:info@mateochicas.com" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Soporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Configuración de las herramientas específicas para SEO dinámico
+        const TOOLS_CONFIG = {
+            'general': {
+                title: "Mateo Chicas | Convertidor de Imágenes Premium",
+                heading: "Convertidor de Imágenes",
+                desc: "Optimiza y convierte tus fotos localmente, manteniendo tu privacidad intacta.",
+                defaultFormat: "image/webp",
+                accept: "image/*",
+                dropzoneText: "Arrastra tus fotos aquí o examina",
+                dropzoneSub: "Soporta PNG, JPG, WEBP, GIF, BMP, AVIF",
+                seoHeading: "Herramienta de Conversión de Imágenes Online Segura",
+                seoText: `<p>Este convertidor inteligente unifica los mejores motores de renderizado local de imágenes. Convierte libremente entre formatos modernos como WebP y formatos estables como PNG o JPG de manera fluida.</p><p>A diferencia de otras herramientas, respetamos tu ancho de banda y privacidad al evitar transferencias de archivos en la nube. ¡Toda la computación ocurre directamente en tu dispositivo!</p>`
+            },
+            'png-to-webp': {
+                title: "Convertir PNG a WebP Gratis por Lote | Mateo Chicas",
+                heading: "Convertir PNG a WebP",
+                desc: "Reduce drásticamente el tamaño de tus imágenes PNG convirtiéndolas a formato WebP sin perder transparencia.",
+                defaultFormat: "image/webp",
+                accept: "image/png",
+                dropzoneText: "Sube o arrastra tus archivos PNG aquí",
+                dropzoneSub: "Especializado en compresión inteligente con transparencia",
+                seoHeading: "¿Por qué convertir de PNG a WebP?",
+                seoText: `<p>Las imágenes en formato <strong>PNG</strong> son ideales por mantener una calidad impecable y fondos transparentes, pero suelen ser extremadamente pesadas para la web.</p><p>Al <strong>convertir PNG a WebP</strong> usando nuestra herramienta, puedes reducir el peso del archivo hasta en un 80% manteniendo idéntica la transparencia alfa y la fidelidad visual, mejorando el Core Web Vitals de tu web.</p>`
+            },
+            'jpg-to-webp': {
+                title: "Convertidor de JPG a WebP Online y Rápido | Mateo Chicas",
+                heading: "Convertir JPG a WebP",
+                desc: "Convierte tus fotos e imágenes JPG/JPEG a WebP para acelerar la carga de tu sitio web.",
+                defaultFormat: "image/webp",
+                accept: "image/jpeg,image/jpg",
+                dropzoneText: "Arrastra tus fotos JPG o JPEG aquí",
+                dropzoneSub: "Obtén el máximo ahorro de peso con calidad visual óptima",
+                seoHeading: "Ventajas de optimizar JPG al formato WebP",
+                seoText: `<p>El formato JPG ha sido el estándar web durante décadas, pero carece de la compresión eficiente de nueva generación. El formato <strong>WebP</strong> (desarrollado por Google) ofrece una compresión con y sin pérdida mucho más avanzada.</p><p>Nuestra utilidad local de <strong>JPG a WebP</strong> re-codifica cada píxel para asegurar que tus imágenes mantengan detalles nítidos consumiendo apenas una fracción del espacio original.</p>`
+            },
+            'png-to-jpg': {
+                title: "Convertir PNG a JPG Online en Segundos | Mateo Chicas",
+                heading: "Convertir PNG a JPG",
+                desc: "Convierte imágenes PNG a JPG plano de forma rápida con fondo blanco automático.",
+                defaultFormat: "image/jpeg",
+                accept: "image/png",
+                dropzoneText: "Arrastra tus archivos PNG para pasarlos a JPG",
+                dropzoneSub: "Se rellenarán las transparencias automáticamente en color blanco",
+                seoHeading: "Cuándo es recomendable pasar de PNG a JPG",
+                seoText: `<p>El formato PNG está diseñado para gráficos y elementos de interfaz con transparencias. Si tienes fotografías o ilustraciones complejas sin transparencia guardadas como PNG, convertirlas a <strong>JPG</strong> reducirá considerablemente su tamaño sin penalizaciones apreciables de visualización.</p><p>Nuestra utilidad procesa las capas transparentes agregando un fondo de color sólido (blanco) automáticamente para prevenir siluetas oscuras.</p>`
+            },
+            'image-to-ico': {
+                title: "Generador de Favicon .ICO desde Imagen | Mateo Chicas",
+                heading: "Convertir Imagen a ICO",
+                desc: "Crea el favicon de tu sitio web convirtiendo cualquier PNG o JPG a formato .ICO en segundos.",
+                defaultFormat: "image/x-icon",
+                accept: "image/png,image/jpeg,image/webp",
+                dropzoneText: "Arrastra tu logotipo o icono aquí",
+                dropzoneSub: "Se generará un archivo favicon.ico ideal para proyectos web",
+                seoHeading: "Cómo generar un Favicon .ICO perfecto para tu web",
+                seoText: `<p>Un favicon es la pequeña identidad gráfica que los navegadores despliegan en las pestañas de navegación. Aunque muchos navegadores modernos leen PNG, el estándar de mayor compatibilidad sigue siendo el formato <strong>.ICO</strong>.</p><p>Esta herramienta procesa tus logotipos convirtiéndolos en un mapa de bits multiplataforma óptimo para ser reconocido por motores de búsqueda, navegadores antiguos y marcadores de favoritos.</p>`
+            }
+        };
+
+        // Estado global de la aplicación
+        let filesQueue = [];
+        let globalFormat = 'image/webp';
+        let globalQuality = 0.85;
+        let currentToolMode = 'general';
+
+        // Elementos del DOM
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('image-input');
+        const filesListContainer = document.getElementById('files-list');
+        const emptyState = document.getElementById('empty-state');
+        const filesCount = document.getElementById('files-count');
+        const qualitySlider = document.getElementById('quality-slider');
+        const qualityDisplay = document.getElementById('quality-display');
+        const globalActions = document.getElementById('global-actions');
+        const downloadZipBtn = document.getElementById('download-zip-btn');
+        const clearAllBtn = document.getElementById('clear-all-btn');
+        const savingsCard = document.getElementById('savings-card');
+        const savingsPercentage = document.getElementById('savings-percentage');
+
+        // Función para cambiar de herramienta / Configuración SEO dinámica
+        function setToolMode(mode) {
+            if (!TOOLS_CONFIG[mode]) mode = 'general';
+            currentToolMode = mode;
+
+            const config = TOOLS_CONFIG[mode];
+
+            // 1. Modificar textos e identidades para SEO dinámico
+            document.title = config.title;
+            document.getElementById('main-hero-title').innerText = config.heading;
+            document.getElementById('main-hero-desc').innerText = config.desc;
+            document.getElementById('seo-heading').innerText = config.seoHeading;
+            document.getElementById('seo-text').innerHTML = config.seoText;
+
+            // Modificar Dropzone
+            document.getElementById('dropzone-text').innerText = config.dropzoneText;
+            document.getElementById('dropzone-subtext').innerText = config.dropzoneSub;
+            fileInput.setAttribute('accept', config.accept);
+
+            // 2. Modificar Formatos Objetivo
+            changeGlobalFormat(config.defaultFormat);
+
+            // Actualizar pestañas activas
+            document.querySelectorAll('.tool-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-[#0071e3]', 'text-white', 'border-transparent');
+                btn.classList.add('bg-white', 'dark:bg-neutral-900', 'text-neutral-600', 'dark:text-neutral-300', 'border-neutral-200', 'dark:border-neutral-800');
+            });
+            const activeTab = document.getElementById(`tab-${mode}`);
+            if (activeTab) {
+                activeTab.classList.remove('bg-white', 'dark:bg-neutral-900', 'text-neutral-600', 'dark:text-neutral-300', 'border-neutral-200', 'dark:border-neutral-800');
+                activeTab.classList.add('bg-[#0071e3]', 'text-white', 'border-transparent');
+            }
+
+            // Ocultar slider de calidad si es ICO o BMP ya que no tienen compresión lossy tradicional
+            const qualityContainer = document.getElementById('quality-container');
+            if (config.defaultFormat === 'image/x-icon' || config.defaultFormat === 'image/bmp') {
+                qualityContainer.classList.add('hidden');
+            } else {
+                qualityContainer.classList.remove('hidden');
+            }
+
+            // Actualizar URL con hash para que el usuario pueda copiar el link específico
+            if (history.pushState) {
+                history.pushState(null, null, `#${mode}`);
+            } else {
+                location.hash = `#${mode}`;
+            }
+
+            // Si hay archivos en cola, refrescar la lista con el nuevo formato de salida correspondiente
+            if (filesQueue.length > 0) {
+                filesQueue.forEach(item => {
+                    if (item.status !== 'success') {
+                        item.targetFormat = config.defaultFormat;
+                    }
+                });
+                renderFiles();
+            }
+        }
+
+        // Detectar Hash o Parámetros en la URL al cargar
+        function detectURLMode() {
+            const hash = window.location.hash.replace('#', '');
+            const params = new URLSearchParams(window.location.search);
+            const queryMode = params.get('tool');
+
+            if (TOOLS_CONFIG[hash]) {
+                setToolMode(hash);
+            } else if (TOOLS_CONFIG[queryMode]) {
+                setToolMode(queryMode);
+            } else {
+                setToolMode('general');
+            }
+        }
+
+        // Eventos Drag & Drop
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropzone.classList.add('dragover');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropzone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('dragover');
+            }, false);
+        });
+
+        dropzone.addEventListener('drop', (e) => {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            handleFiles(files);
+        });
+
+        // Configuración de formato y calidad
+        function changeGlobalFormat(format) {
+            globalFormat = format;
+
+            // Actualizar botones segmentados
+            document.querySelectorAll('#format-segmented .segment-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.innerText.toLowerCase() === format.split('/')[1].replace('x-icon', 'ico').replace('jpeg', 'jpg').toLowerCase()) {
+                    btn.classList.add('active');
+                }
+            });
+
+            if (filesQueue.length > 0) {
+                filesQueue.forEach(item => {
+                    if (item.status !== 'success') {
+                        item.targetFormat = format;
+                    }
+                });
+                renderFiles();
+            }
+        }
+
+        function updateQuality(val) {
+            globalQuality = parseInt(val) / 100;
+            qualityDisplay.innerText = `${val}%`;
+        }
+
+        // Procesar imágenes cargadas
+        function handleFiles(files) {
+            const validImages = Array.from(files).filter(file => file.type.startsWith('image/'));
+
+            if (validImages.length === 0) return;
+
+            validImages.forEach(file => {
+                const fileId = 'img-' + Math.random().toString(36).substr(2, 9);
+                const item = {
+                    id: fileId,
+                    file: file,
+                    name: file.name,
+                    originalSize: file.size,
+                    convertedSize: null,
+                    targetFormat: globalFormat,
+                    status: 'pending',
+                    previewUrl: URL.createObjectURL(file),
+                    convertedBlob: null,
+                    convertedUrl: null
+                };
+                filesQueue.push(item);
+            });
+
+            renderFiles();
+            updateGlobalUI();
+        }
+
+        // Eliminar fila individual
+        function removeFile(id) {
+            const index = filesQueue.findIndex(item => item.id === id);
+            if (index !== -1) {
+                if (filesQueue[index].previewUrl) URL.revokeObjectURL(filesQueue[index].previewUrl);
+                if (filesQueue[index].convertedUrl) URL.revokeObjectURL(filesQueue[index].convertedUrl);
+                filesQueue.splice(index, 1);
+            }
+            renderFiles();
+            updateGlobalUI();
+        }
+
+        // Limpiar todo el queue
+        function clearAllFiles() {
+            filesQueue.forEach(item => {
+                if (item.previewUrl) URL.revokeObjectURL(item.previewUrl);
+                if (item.convertedUrl) URL.revokeObjectURL(item.convertedUrl);
+            });
+            filesQueue = [];
+            renderFiles();
+            updateGlobalUI();
+        }
+
+        // Formato para pesos de archivo
+        function formatBytes(bytes, decimals = 1) {
+            if (bytes === 0) return '0 B';
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['B', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+
+        function renderFiles() {
+            if (filesQueue.length === 0) {
+                emptyState.classList.remove('hidden');
+                filesListContainer.innerHTML = '';
+                filesListContainer.appendChild(emptyState);
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            const fragment = document.createDocumentFragment();
+
+            filesQueue.forEach(item => {
+                const row = document.createElement('div');
+                row.className = `flex items-center gap-3 py-3.5 transition-all`;
+
+                const extensionText = item.targetFormat.split('/')[1].replace('x-icon', 'ico').replace('jpeg', 'jpg').toUpperCase();
+
+                let actionBtnHtml = '';
+                let statsHtml = `<span class="text-[11px] text-neutral-400 dark:text-neutral-500 font-medium">${formatBytes(item.originalSize)}</span>`;
+
+                if (item.status === 'pending') {
+                    actionBtnHtml = `
+                        <button onclick="convertSingle('${item.id}')" class="p-1.5 text-neutral-500 hover:text-[#0071e3] hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-full transition-colors flex items-center justify-center" title="Convertir">
+                            <i data-lucide="play" class="w-3.5 h-3.5"></i>
+                        </button>
+                    `;
+                } else if (item.status === 'converting') {
+                    actionBtnHtml = `
+                        <div class="animate-spin text-[#0071e3] flex items-center justify-center p-1.5">
+                            <i data-lucide="loader-2" class="w-3.5 h-3.5"></i>
+                        </div>
+                    `;
+                } else if (item.status === 'success') {
+                    const reduction = Math.round(((item.originalSize - item.convertedSize) / item.originalSize) * 100);
+                    const reductionText = reduction > 0 ? `(-${reduction}%)` : `(+${Math.abs(reduction)}%)`;
+                    const reductionColor = reduction > 0 ? 'text-green-500' : 'text-amber-500';
+
+                    statsHtml = `
+                        <div class="flex items-baseline gap-1.5">
+                            <span class="text-[11px] text-neutral-400 line-through font-normal">${formatBytes(item.originalSize)}</span>
+                            <span class="text-[11px] font-bold text-[#1d1d1f] dark:text-[#f5f5f7]">
+                                ${formatBytes(item.convertedSize)} 
+                                <span class="${reductionColor} font-bold ml-1">${reductionText}</span>
+                            </span>
+                        </div>
+                    `;
+
+                    actionBtnHtml = `
+                        <a href="${item.convertedUrl}" download="${item.name.substring(0, item.name.lastIndexOf('.')) || item.name}.${item.targetFormat.split('/')[1].replace('x-icon', 'ico').replace('jpeg', 'jpg')}" 
+                           class="p-1.5 text-green-500 hover:bg-green-500/10 rounded-full transition-colors flex items-center justify-center" title="Descargar">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                        </a>
+                    `;
+                } else {
+                    actionBtnHtml = `
+                        <span class="text-[10px] text-red-500 font-semibold px-2">Fallo</span>
+                    `;
+                }
+
+                row.innerHTML = `
+                    <div class="w-9 h-9 rounded-lg overflow-hidden bg-neutral-100 dark:bg-neutral-800 flex-shrink-0 relative border border-neutral-100 dark:border-neutral-900">
+                        <img src="${item.previewUrl}" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0 flex flex-col gap-0.5">
+                        <h4 class="text-xs font-medium text-[#1d1d1f] dark:text-[#f5f5f7] truncate">${item.name}</h4>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[9px] bg-neutral-100 dark:bg-neutral-800 text-[#86868b] px-1.5 py-0.5 rounded-md font-bold uppercase">${extensionText}</span>
+                            ${statsHtml}
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-1 flex-shrink-0">
+                        ${actionBtnHtml}
+                        <button onclick="removeFile('${item.id}')" class="p-1.5 text-neutral-400 hover:text-red-500 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors flex items-center justify-center">
+                            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                `;
+
+                fragment.appendChild(row);
+            });
+
+            filesListContainer.innerHTML = '';
+            filesListContainer.appendChild(fragment);
+            lucide.createIcons();
+        }
+
+        // Conversión asincrónica por lotes
+        async function convertAll() {
+            const pendingItems = filesQueue.filter(item => item.status === 'pending');
+            if (pendingItems.length === 0) return;
+
+            for (const item of pendingItems) {
+                await convertSingle(item.id);
+            }
+        }
+
+        // Motor local de conversión utilizando Canvas API
+        function convertSingle(id) {
+            return new Promise((resolve) => {
+                const item = filesQueue.find(f => f.id === id);
+                if (!item) return resolve();
+
+                item.status = 'converting';
+                renderFiles();
+
+                const img = new Image();
+                img.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = img.naturalWidth;
+                    canvas.height = img.naturalHeight;
+                    const ctx = canvas.getContext('2d');
+
+                    if (item.targetFormat === 'image/jpeg') {
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    }
+
+                    ctx.drawImage(img, 0, 0);
+
+                    let outputType = item.targetFormat;
+                    let formatQuality = globalQuality;
+
+                    if (item.targetFormat === 'image/x-icon') {
+                        outputType = 'image/png';
+                    }
+
+                    canvas.toBlob((blob) => {
+                        if (blob) {
+                            if (item.convertedUrl) URL.revokeObjectURL(item.convertedUrl);
+
+                            item.convertedBlob = blob;
+                            item.convertedSize = blob.size;
+                            item.convertedUrl = URL.createObjectURL(blob);
+                            item.status = 'success';
+                        } else {
+                            item.status = 'error';
+                        }
+
+                        renderFiles();
+                        updateGlobalUI();
+                        resolve();
+                    }, outputType, formatQuality);
+                };
+
+                img.onerror = function () {
+                    item.status = 'error';
+                    renderFiles();
+                    resolve();
+                };
+
+                img.src = item.previewUrl;
+            });
+        }
+
+        // Descarga agrupada mediante ZIP comprimido local
+        function downloadAllAsZip() {
+            const successItems = filesQueue.filter(item => item.status === 'success');
+            if (successItems.length === 0) return;
+
+            const zip = new JSZip();
+
+            successItems.forEach(item => {
+                const baseName = item.name.substring(0, item.name.lastIndexOf('.')) || item.name;
+                const ext = item.targetFormat.split('/')[1].replace('x-icon', 'ico').replace('jpeg', 'jpg');
+                const finalFilename = `${baseName}.${ext}`;
+                zip.file(finalFilename, item.convertedBlob);
+            });
+
+            zip.generateAsync({ type: "blob" }).then(function (content) {
+                const zipUrl = URL.createObjectURL(content);
+                const dlLink = document.createElement('a');
+                dlLink.href = zipUrl;
+                dlLink.download = "imagenes_convertidas_mateochicas.zip";
+                dlLink.click();
+                URL.revokeObjectURL(zipUrl);
+            });
+        }
+
+        // Actualización global de la interfaz
+        function updateGlobalUI() {
+            filesCount.innerText = filesQueue.length;
+
+            if (filesQueue.length > 0) {
+                globalActions.classList.remove('hidden');
+                clearAllBtn.classList.remove('hidden');
+            } else {
+                globalActions.classList.add('hidden');
+                clearAllBtn.classList.add('hidden');
+            }
+
+            const successItems = filesQueue.filter(item => item.status === 'success');
+            if (successItems.length > 0) {
+                downloadZipBtn.classList.remove('hidden');
+                savingsCard.classList.remove('hidden');
+
+                const totalOriginal = successItems.reduce((acc, item) => acc + item.originalSize, 0);
+                const totalConverted = successItems.reduce((acc, item) => acc + item.convertedSize, 0);
+                const totalReduction = Math.round(((totalOriginal - totalConverted) / totalOriginal) * 100);
+
+                if (totalReduction > 0) {
+                    savingsPercentage.className = "text-xs font-bold text-green-500 dark:text-green-400";
+                    savingsPercentage.innerText = `-${totalReduction}%`;
+                } else if (totalReduction < 0) {
+                    savingsPercentage.className = "text-xs font-bold text-amber-500";
+                    savingsPercentage.innerText = `+${Math.abs(totalReduction)}%`;
+                } else {
+                    savingsPercentage.className = "text-xs font-bold text-gray-500";
+                    savingsPercentage.innerText = "0%";
+                }
+            } else {
+                downloadZipBtn.classList.add('hidden');
+                savingsCard.classList.add('hidden');
+            }
+        }
+
+        // Escuchar cambios en la URL por clicks externos o historial
+        window.addEventListener('hashchange', detectURLMode);
+        window.addEventListener('DOMContentLoaded', detectURLMode);
+    </script>
+</body>
+
+</html>

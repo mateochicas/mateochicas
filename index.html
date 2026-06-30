@@ -251,39 +251,76 @@
         </section>
 
         <!-- Nueva Sección de Herramientas -->
-        <section id="herramientas" class="py-24 px-6 flex flex-col items-center">
+        <section id="herramientas"
+            class="py-24 px-6 flex flex-col items-center bg-black transition-colors duration-300">
             <div class="max-w-5xl w-full">
-                <div class="max-w-2xl mb-12">
-                    <h2 class="text-4xl md:text-5xl font-semibold mb-4 text-[#1d1d1f] dark:text-[#f5f5f7]">Herramientas
-                        Gratuitas.</h2>
-                    <p class="text-xl text-[#86868b]">Utilidades online rápidas y eficientes desarrolladas para
-                        optimizar tu día a día.</p>
+                <!-- Encabezado con link a la derecha estilo Servicios -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                    <div class="max-w-2xl">
+                        <h2 class="text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-[#f5f5f7]">
+                            Herramientas Gratuitas.
+                        </h2>
+                        <p class="text-xl text-[#86868b]">
+                            Utilidades online rápidas y eficientes desarrolladas para optimizar tu día a día.
+                        </p>
+                    </div>
+                    <a href="/tools/"
+                        class="inline-flex items-center gap-1 text-[#0071e3] hover:underline text-lg font-medium group shrink-0 whitespace-nowrap">
+                        Ver todas las herramientas
+                        <i data-lucide="chevron-right"
+                            class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"></i>
+                    </a>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- QR Card -->
+                <!-- Bento Grid Asimétrico (Estilo Servicios Profesionales) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+
+                    <!-- 1. Generador QR (Tarjeta Horizontal Ancha - Ocupa 2 columnas) -->
                     <a href="/tools/qr/"
-                        class="flat-card bg-white dark:bg-[#1c1c1e] justify-center items-center text-center">
-                        <i data-lucide="qr-code" class="text-[#0071e3] mb-4 w-12 h-12"></i>
-                        <h3 class="text-2xl font-semibold mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">Generador QR</h3>
-                        <p class="text-[#86868b] text-base">Crea códigos QR personalizados al instante.</p>
+                        class="group md:col-span-2 flex flex-row items-center p-8 md:p-12 bg-[#1c1c1e] rounded-3xl border border-[#2c2c2e] hover:scale-[1.01] transition-all duration-300 gap-8 text-left">
+                        <div class="shrink-0">
+                            <i data-lucide="qr-code"
+                                class="text-[#0071e3] w-16 h-16 transition-transform group-hover:scale-105 duration-300"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-[#f5f5f7]">Generador QR.</h3>
+                            <p class="text-[#86868b] text-base leading-relaxed max-w-md">Crea códigos QR personalizados
+                                al instante con opciones avanzadas de descarga.</p>
+                        </div>
                     </a>
 
-                    <!-- Barcode Card -->
+                    <!-- 2. Código de Barras (Tarjeta Vertical - Ocupa 1 columna) -->
                     <a href="/tools/barcode/"
-                        class="flat-card bg-white dark:bg-[#1c1c1e] justify-center items-center text-center">
-                        <i data-lucide="barcode" class="text-[#0071e3] mb-4 w-12 h-12"></i>
-                        <h3 class="text-2xl font-semibold mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">Código de Barras</h3>
-                        <p class="text-[#86868b] text-base">Genera códigos de barras en diferentes formatos.</p>
+                        class="group md:col-span-1 flex flex-col items-center justify-center p-8 md:p-12 bg-[#1c1c1e] rounded-3xl border border-[#2c2c2e] hover:scale-[1.01] transition-all duration-300 text-center">
+                        <div class="mb-6">
+                            <i data-lucide="barcode"
+                                class="text-[#0071e3] w-14 h-14 transition-transform group-hover:scale-105 duration-300"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-2 text-[#f5f5f7]">Código de Barras.</h3>
+                        <p class="text-[#86868b] text-base leading-relaxed">Genera códigos de barras en diferentes
+                            formatos estándar.</p>
                     </a>
 
-                    <!-- Scanner Card -->
+                    <!-- 3. Escáner Online (Tarjeta Completa Abajo - Ocupa las 3 columnas) -->
                     <a href="/tools/scanner/"
-                        class="flat-card bg-white dark:bg-[#1c1c1e] justify-center items-center text-center">
-                        <i data-lucide="scan" class="text-[#0071e3] mb-4 w-12 h-12"></i>
-                        <h3 class="text-2xl font-semibold mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">Escáner Online</h3>
-                        <p class="text-[#86868b] text-base">Escanea códigos directamente desde tu cámara.</p>
+                        class="group md:col-span-3 flex flex-col justify-between p-8 md:p-12 bg-[#1c1c1e] rounded-3xl border border-[#2c2c2e] hover:scale-[1.005] transition-all duration-300 text-left min-h-[220px] relative overflow-hidden">
+                        <div class="flex items-start justify-between w-full mb-6">
+                            <i data-lucide="scan"
+                                class="text-[#0071e3] w-12 h-12 transition-transform group-hover:scale-105 duration-300"></i>
+                            <!-- Badge superior derecho estilo UI/UX de la imagen -->
+                            <span
+                                class="text-[11px] font-semibold uppercase tracking-wider text-[#0071e3] bg-[#0071e3]/10 px-3 py-1 rounded-full border border-[#0071e3]/20">
+                                CÁMARA ONLINE
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-semibold mb-3 text-[#f5f5f7]">Escáner Online Premium.</h3>
+                            <p class="text-[#86868b] text-base leading-relaxed max-w-2xl">Escanea cualquier código de
+                                barras o QR directamente desde tu cámara web o móvil en tiempo real, sin instalar apps
+                                adicionales.</p>
+                        </div>
                     </a>
+
                 </div>
             </div>
         </section>
@@ -292,10 +329,10 @@
             <div class="max-w-5xl w-full">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div class="max-w-2xl">
-                        <h2 class="text-4xl md:text-5xl font-semibold mb-4 text-[#1d1d1f] dark:text-[#f5f5f7]">Servicios
-                            Profesionales.</h2>
-                        <p class="text-xl text-[#86868b]">Soluciones de alta gama diseñadas para el mundo digital
-                            moderno.</p>
+                        <h2 class="text-4xl md:text-5xl font-semibold mb-4 text-[#1d1d1f] dark:text-[#f5f5f7]">
+                            Servicios para negocios.</h2>
+                        <p class="text-xl text-[#86868b]">Soluciones diseñadas para el mundo digital
+                            negocios y emprendimientos.</p>
                     </div>
                     <a href="/pages/services/" class="link-apple text-lg font-medium flex items-center gap-1 group">
                         Ver todos los servicios <i data-lucide="chevron-right"
