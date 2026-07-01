@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo Chicas | Política de Privacidad</title>
+    <meta name="description"
+        content="Consulta la política de privacidad de Mateo Chicas. Conoce cómo tratamos tus datos y el uso de herramientas locales y servicios de Google.">
+    <meta name="keywords"
+        content="Mateo Chicas, Mateo Alexander Chicas Villavicencio, política de privacidad, cookies, google analytics, google adsense, privacidad local">
+    <link rel="canonical" href="https://www.mateochicas.com/pages/privacy/">
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" id="favicon" href="/src/favicon/nav-icon-black.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <script>
+        // Detect system preference and apply dark class
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        // Listen for changes and update favicon
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateFavicon();
+        });
+        function updateFavicon() {
+            const favicon = document.getElementById('favicon');
+            if (document.documentElement.classList.contains('dark')) {
+                favicon.href = '/src/favicon/nav-icon-white.png';
+            } else {
+                favicon.href = '/src/favicon/nav-icon-black.png';
+            }
+        }
+        // Initial call to set correct icon
+        updateFavicon();
+    </script>
+    <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
+
+    <style>
+        :root {
+            --apple-blue: #0071e3;
+            --apple-dark: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-border: #d2d2d7;
+        }
+
+        * {
+            font-family: 'Google Sans', sans-serif !important;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--apple-dark);
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dark body {
+            background-color: #000000;
+            color: #f5f5f7;
+        }
+
+        .apple-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 50;
+            border-bottom: 1px solid var(--apple-border);
+            font-size: 12px;
+            color: var(--apple-dark);
+        }
+
+        .dark .apple-nav {
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid #424245;
+            color: #f5f5f7;
+        }
+
+        .legal-content {
+            max-width: 900px;
+            margin: 100px auto 100px auto;
+            padding: 0 40px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #424245;
+            text-align: justify;
+        }
+
+        .dark .legal-content {
+            color: #a1a1a6;
+        }
+
+        .legal-content h1 {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #1d1d1f;
+            letter-spacing: -0.03em;
+            text-align: left;
+        }
+
+        .dark .legal-content h1 {
+            color: #ffffff;
+        }
+
+        .legal-content h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 60px;
+            margin-bottom: 24px;
+            color: #1d1d1f;
+            border-bottom: 2px solid var(--apple-blue);
+            display: inline-block;
+            padding-right: 20px;
+        }
+
+        .dark .legal-content h2 {
+            color: #ffffff;
+        }
+
+        .clause-container {
+            margin-bottom: 48px;
+        }
+
+        .legal-content p {
+            margin-bottom: 24px;
+        }
+
+        .highlight-notice {
+            background-color: #0071e3;
+            color: white;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 0;
+            font-weight: 600;
+            line-height: 1.5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .highlight-notice {
+            background-color: rgba(0, 113, 227, 0.2);
+            color: #2997ff;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .legal-footer-note {
+            margin-top: 100px;
+            border-top: 1px solid var(--apple-border);
+            padding-top: 40px;
+            font-size: 12px;
+            color: var(--apple-gray);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="apple-nav">
+        <a href="/index.html" class="flex items-center gap-2 hover:opacity-70 transition-opacity">
+            <img src="/src/icons/logo.svg" alt="Mateo Chicas Logo" class="h-16 w-16 dark:invert">
+        </a>
+        <a href="/index.html" class="text-[#0071e3] hover:underline">Volver a inicio</a>
+    </nav>
+
+    <main class="legal-content">
+        <h1>Política de Privacidad</h1>
+        <p class="text-xs text-gray-500 mb-12">Fecha de entrada en vigor: 1 de Julio de 2026</p>
+
+        <div class="highlight-notice">
+            COMPROMISO DE PRIVACIDAD: EN MATEOCHICAS.COM VALORAMOS TU PRIVACIDAD. LA MAYOR PARTE DE NUESTRAS
+            HERRAMIENTAS SE EJECUTAN LOCALMENTE EN TU NAVEGADOR. NO ALMACENAMOS NI COMPARTIMOS TUS ARCHIVOS NI DATOS DE
+            PROCESAMIENTO EN NUESTROS SERVIDORES.
+        </div>
+
+        <div class="clause-container">
+            <h2>1. Responsable del Tratamiento de Datos</h2>
+            <p>El responsable del tratamiento de los datos personales recabados a través de este sitio web es Mateo
+                Alexander Chicas Villavicencio (en adelante, "el Propietario"), con domicilio de contacto y soporte
+                técnico a través del correo electrónico <a href="mailto:info@mateochicas.com"
+                    class="text-[#0071e3] hover:underline">info@mateochicas.com</a>.</p>
+        </div>
+
+        <div class="clause-container">
+            <h2>2. Procesamiento Local de Datos y Herramientas</h2>
+            <p>Una premisa fundamental de este sitio web es el respeto absoluto por tus archivos y datos de trabajo. La
+                mayoría de las herramientas y utilidades interactivas integradas en este sitio web (por ejemplo,
+                convertidores de imágenes, formateadores de código, calculadoras y optimizadores) funcionan y se
+                ejecutan <strong>de forma local</strong> en el navegador web del usuario.</p>
+            <p>Esto significa que el procesamiento de tus archivos, textos, imágenes o cualquier otra entrada se realiza
+                enteramente en el lado del cliente (tu dispositivo). Ninguno de estos datos o archivos es transmitido,
+                subido, procesado ni almacenado en los servidores de mateochicas.com ni compartido con terceros. Tus
+                datos se mantienen en tu dispositivo en todo momento.</p>
+        </div>
+
+        <div class="clause-container">
+            <h2>3. Servicios de Terceros e Información Recopilada</h2>
+            <p>Para la optimización técnica, el análisis de rendimiento y el sostenimiento económico del sitio web, se
+                integran herramientas de terceros que pueden recopilar información general y cookies cuando visitas
+                nuestra web:</p>
+
+            <h3 class="text-lg font-bold mt-4 mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">A. Google Analytics</h3>
+            <p>Utilizamos Google Analytics para analizar el uso del sitio web, comprender el comportamiento de los
+                usuarios en el portal y mejorar la experiencia de navegación. Google Analytics recopila información
+                estándar de registro web y detalles del comportamiento de los visitantes de forma anónima o
+                seudonimizada (como el tiempo de navegación, páginas visitadas, procedencia del tráfico y tipo de
+                dispositivo).</p>
+
+            <h3 class="text-lg font-bold mt-4 mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">B. Google AdSense</h3>
+            <p>Este sitio web utiliza Google AdSense para mostrar anuncios a los visitantes. Los proveedores de
+                terceros, incluido Google, utilizan cookies para mostrar anuncios basados en las visitas anteriores de
+                un usuario a este sitio web u otros sitios web de Internet.</p>
+            <p>El uso de cookies de publicidad por parte de Google permite a este y a sus socios mostrar anuncios a los
+                usuarios en función de las visitas que realizan en sus sitios o en otros sitios de Internet. Puedes
+                optar por no recibir publicidad personalizada de Google visitando la página de <a
+                    href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer"
+                    class="text-[#0071e3] hover:underline">Configuración de Anuncios de Google</a> o el portal <a
+                    href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer"
+                    class="text-[#0071e3] hover:underline">www.aboutads.info</a>.</p>
+
+            <h3 class="text-lg font-bold mt-4 mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">C. Google Search Console</h3>
+            <p>Utilizamos Google Search Console con fines meramente estadísticos y de monitorización técnica del
+                posicionamiento orgánico en el buscador de Google. Esta herramienta no recopila datos de carácter
+                personal directo de los usuarios finales, sino métricas agregadas sobre las consultas de búsqueda que
+                llevan a nuestro sitio y errores de indexación.</p>
+        </div>
+
+        <div class="clause-container">
+            <h2>4. Uso de Cookies</h2>
+            <p>Las cookies son pequeños archivos de texto que los sitios web almacenan en su navegador para recordar
+                información sobre su visita. Además de las cookies de terceros mencionadas anteriormente (Google
+                Analytics y Google AdSense), este sitio web puede utilizar cookies técnicas necesarias para el correcto
+                funcionamiento del portal, tales como guardar tu preferencia de tema visual (modo oscuro o claro).</p>
+            <p>El usuario puede en cualquier momento configurar su navegador para bloquear, deshabilitar o eliminar las
+                cookies instaladas. Sin embargo, ten en cuenta que desactivar ciertas cookies podría limitar algunas
+                funcionalidades del sitio web.</p>
+        </div>
+
+        <div class="clause-container">
+            <h2>5. Derechos del Usuario</h2>
+            <p>Como usuario del sitio web, tienes derecho a acceder, rectificar, limitar y suprimir cualquier dato
+                personal que hayamos recopilado (por ejemplo, si nos envías un correo de soporte técnico). Dado que la
+                gran mayoría de las herramientas operan de manera local y no almacenamos registros de tus archivos, no
+                disponemos de bases de datos que vinculen tu identidad con tus archivos procesados.</p>
+            <p>Para ejercer cualquiera de tus derechos, o para cualquier duda relacionada con el tratamiento de tus
+                datos, puedes enviar una solicitud formal por correo electrónico a <a href="mailto:info@mateochicas.com"
+                    class="text-[#0071e3] hover:underline">info@mateochicas.com</a>.</p>
+        </div>
+
+        <div class="clause-container">
+            <h2>6. Modificaciones a esta Política de Privacidad</h2>
+            <p>El Propietario se reserva el derecho a modificar la presente política de privacidad para adaptarla a
+                novedades legislativas o jurisprudenciales, así como a prácticas de la industria o cambios en el
+                funcionamiento de la web. Te recomendamos revisar esta página periódicamente para mantenerte informado
+                sobre cómo protegemos tu información.</p>
+        </div>
+
+        <div class="legal-footer-note">
+            <p>Esta política de privacidad ha sido redactada de conformidad con las directrices de protección de datos y
+                los requisitos de transparencia para el uso de servicios publicitarios y de analítica web de Google.</p>
+            <p class="mt-4 font-bold text-black dark:text-white">Mateo Alexander Chicas Villavicencio | mateochicas.com
+                | Todos los derechos reservados © 2026</p>
+        </div>
+    </main>
+
+    <footer class="bg-[#f5f5f7] dark:bg-[#1d1d1f] py-8 px-6 text-center text-sm text-[#86868b]">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>Copyright © 2026 Mateo Alexander Chicas Villavicencio. Todos los derechos reservados.</p>
+            <div class="flex gap-4">
+                <a href="/pages/terms/index.html" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Términos</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/privacy/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Privacidad</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/services/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Servicios</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="mailto:info@mateochicas.com" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Soporte</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
