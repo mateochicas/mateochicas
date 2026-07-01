@@ -4,7 +4,7 @@
   <!-- Página Principal -->
   <url>
     <loc>https://www.mateochicas.com/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
@@ -20,7 +20,7 @@
   <!-- Directorio de Herramientas (Sección Principal) -->
   <url>
     <loc>https://www.mateochicas.com/tools/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -28,31 +28,37 @@
   <!-- Herramientas Individuales -->
   <url>
     <loc>https://www.mateochicas.com/tools/qr/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.mateochicas.com/tools/barcode/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.mateochicas.com/tools/scanner/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.mateochicas.com/tools/img-converter/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://www.mateochicas.com/tools/img-gradient/</loc>
-    <lastmod>2026-06-28</lastmod>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+<url>
+    <loc>https://www.mateochicas.com/tools/clearcut/</loc>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -67,7 +73,7 @@
 
   <url>
     <loc>https://www.mateochicas.com/pages/privacy/</loc>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.40</priority>
   </url>
