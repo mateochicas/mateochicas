@@ -1,4 +1,4 @@
-##Copyright © 2026 Mateo Alexander Chicas Villavicencio.
+Copyright © 2026 Mateo Alexander Chicas Villavicencio.
 
 Todos los derechos reservados.
 Queda estrictamente prohibida la reproducción, distribución, modificación
