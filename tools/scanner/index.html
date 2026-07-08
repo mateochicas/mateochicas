@@ -1,0 +1,516 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8Q819MR8K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-S8Q819MR8K');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9607008311974097"
+        crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-9607008311974097">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo Chicas | Escáner QR y Código de Barras</title>
+    <meta name="description"
+        content="Escanea códigos QR y de barras directamente desde tu navegador usando la cámara. Una utilidad web rápida y segura de Mateo Chicas.">
+    <meta name="keywords"
+        content="Mateo Chicas, Mateo Alexander Chicas Villavicencio, escanear qr online, escáner de código de barras web, leer qr con la camara, qr scanner web">
+    <link rel="canonical" href="https://www.mateochicas.com/tools/scanner/">
+    <link rel="icon" type="image/png" id="favicon" href="/src/favicon/nav-icon-black.png">
+    <script src="/src/js/tailwindcss.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateFavicon();
+        });
+        function updateFavicon() {
+            const favicon = document.getElementById('favicon');
+            if (favicon) {
+                if (document.documentElement.classList.contains('dark')) {
+                    favicon.href = '/src/favicon/nav-icon-white.png';
+                } else {
+                    favicon.href = '/src/favicon/nav-icon-black.png';
+                }
+            }
+        }
+        window.addEventListener('DOMContentLoaded', updateFavicon);
+    </script>
+    <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
+    <script src="/src/js/lucide.min.js"></script>
+    <script type="module" src="https://api.mateochicas.com/js/auth-login.js"></script>
+    <!-- Motor de lectura QR y Código de barras de alto rendimiento -->
+    <script src="/src/js/html5-qrcode.min.js"></script>
+
+    <style>
+        :root {
+            --apple-blue: #0071e3;
+            --apple-dark: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-border: #d2d2d7;
+        }
+
+        * {
+            font-family: 'Google Sans', sans-serif !important;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--apple-dark);
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .dark body {
+            background-color: #000000;
+            color: #f5f5f7;
+        }
+
+        .apple-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            border-bottom: 1px solid var(--apple-border);
+            font-size: 12px;
+            color: var(--apple-dark);
+        }
+
+        .dark .apple-nav {
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid #424245;
+            color: #f5f5f7;
+        }
+
+        .link-apple {
+            color: var(--apple-blue);
+            text-decoration: none;
+        }
+
+        .link-apple:hover {
+            text-decoration: underline;
+        }
+
+        .text-hero {
+            font-size: clamp(34px, 6vw, 46px);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.015em;
+        }
+
+        .flat-card {
+            background-color: var(--apple-light-gray);
+            border-radius: 32px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+        }
+
+        @media (min-width: 768px) {
+            .flat-card {
+                padding: 40px;
+            }
+        }
+
+        .dark .flat-card {
+            background-color: #161617;
+            border: 1px solid #2d2d2e;
+        }
+
+        /* Contenedor estricto para el visor de la cámara */
+        .scanner-viewport {
+            background: #000000;
+            border: 1px solid var(--apple-border);
+            border-radius: 24px;
+            width: 100%;
+            min-height: 320px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dark .scanner-viewport {
+            border: 1px solid #2d2d2e;
+        }
+
+        /* Remover estilos por defecto de la librería interna */
+        #reader {
+            width: 100% !important;
+            border: none !important;
+            background: transparent !important;
+        }
+
+        #reader __video {
+            object-fit: cover !important;
+            border-radius: 24px !important;
+        }
+
+        /* Lista de historial estilo iOS */
+        .history-item {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: background 0.2s ease;
+        }
+
+        .dark .history-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header / Navegación -->
+    <nav
+        class="fixed top-0 w-full h-11 bg-[#f5f5f7]/80 dark:bg-[#161617]/80 backdrop-blur-md z-50 border-b border-[#d2d2d7] dark:border-[#424245]">
+        <div class="max-w-[1024px] mx-auto h-full px-6 flex justify-between items-center">
+
+            <!-- Logo a la IZQUIERDA -->
+            <a href="/" class="flex items-center opacity-90 hover:opacity-100 transition-opacity">
+                <img src="/src/svg/logo.svg" alt="Mateo Chicas" class="h-[22px] w-auto dark:invert">
+            </a>
+
+            <!-- Navegación Escritorio (DERECHA) -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/index.html#servicios"
+                    class="text-[12px] text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-black dark:hover:text-white transition-colors">Servicios</a>
+                <a href="/index.html#herramientas"
+                    class="text-[12px] text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-black dark:hover:text-white transition-colors">Herramientas</a>
+                <a href="/pages/account/index.html" id="nav-account-link"
+                    class="hidden text-[12px] text-[#0066cc] transition-all duration-300 opacity-0">Mi Cuenta</a>
+
+                <button id="auth-btn"
+                    class="bg-black dark:bg-white text-white dark:text-black px-3 py-1 rounded-full text-[12px] font-medium hover:opacity-80 transition-all flex items-center gap-2 opacity-0 pointer-events-none duration-300">
+                    <img src="/src/svg/google-icon.svg" alt="G" class="w-3 h-3">
+                    <span id="btn-text">Iniciar Sesión</span>
+                </button>
+            </div>
+
+            <!-- Botón Menú Móvil (DERECHA) -->
+            <button id="menu-toggle" class="md:hidden p-1 text-[#1d1d1f] dark:text-[#f5f5f7]">
+                <i data-lucide="more-horizontal"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu"
+            class="hidden absolute top-11 left-0 w-full bg-[#f5f5f7] dark:bg-[#161617] border-b border-[#d2d2d7] dark:border-[#424245] p-6 flex flex-col gap-6 md:hidden text-center">
+            <a href="/index.html#servicios" class="text-sm">Servicios</a>
+            <a href="/index.html#herramientas" class="text-sm">Herramientas</a>
+            <a href="/pages/account/index.html" id="nav-account-link-mobile"
+                class="hidden text-sm text-[#0066cc] transition-all duration-300 opacity-0">Mi Cuenta</a>
+
+            <div class="flex justify-center">
+                <button id="auth-btn-mobile"
+                    class="bg-black dark:bg-white text-white dark:text-black px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 opacity-0 pointer-events-none duration-300">
+                    <img src="/src/svg/google-icon.svg" alt="G" class="w-3 h-3">
+                    <span id="btn-text-mobile">Iniciar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-24 px-6 max-w-5xl mx-auto">
+
+        <div class="text-center mb-10">
+            <h1 class="text-hero mb-3 text-[#1d1d1f] dark:text-[#f5f5f7]">Escáner de Códigos Universal</h1>
+            <p class="text-md text-[#86868b] max-w-xl mx-auto font-normal">Lector inteligente por cámara en tiempo real
+                para códigos QR, barras comerciales e inventarios.</p>
+        </div>
+
+        <div class="flat-card">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+                <!-- Panel Lateral Izquierdo: Cámara Visor -->
+                <div class="lg:col-span-7 flex flex-col gap-4">
+                    <div class="flex justify-between items-center px-2">
+                        <label class="text-[12px] font-medium text-[#86868b]">Visor de captura nativo</label>
+                        <span id="scanner-status"
+                            class="text-[11px] text-amber-500 font-medium flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-amber-500 inline-block animate-pulse"></span> Listo
+                            para iniciar
+                        </span>
+                    </div>
+
+                    <div class="scanner-viewport shadow-inner">
+                        <div id="reader"></div>
+                        <!-- UI de espera flotante antes de activar cámara -->
+                        <div id="camera-placeholder"
+                            class="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-neutral-900/90 text-white z-10 transition-opacity duration-300">
+                            <i data-lucide="camera" class="w-10 h-10 mb-3 opacity-40 text-neutral-300"></i>
+                            <p class="text-sm font-medium mb-4">Requiere acceso a la cámara de tu dispositivo</p>
+                            <button onclick="startScanner()"
+                                class="bg-[#0071e3] hover:bg-[#0077ed] text-white text-xs font-medium px-6 py-2.5 rounded-full transition-colors">
+                                Activar Cámara
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Control de Cámara -->
+                    <div class="flex gap-3 mt-1">
+                        <button id="btn-stop" disabled onclick="stopScanner()"
+                            class="flex-1 border border-[#d2d2d7] dark:border-[#424245] text-[#1d1d1f] dark:text-[#f5f5f7] hover:bg-black/5 dark:hover:bg-white/5 opacity-40 disabled:pointer-events-none rounded-full py-2.5 text-xs font-medium transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="camera-off" class="w-3.5 h-3.5"></i>
+                            <span>Detener cámara</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Panel Lateral Derecho: Resultados y Flujo Técnico -->
+                <div class="lg:col-span-5 flex flex-col justify-between gap-6">
+
+                    <!-- Tarjeta de Resultado Dinámica -->
+                    <div
+                        class="bg-white dark:bg-[#2d2d2e]/40 border border-[#d2d2d7]/60 dark:border-[#424245]/50 rounded-2xl p-5 flex flex-col gap-4">
+                        <div
+                            class="flex justify-between items-center border-b border-neutral-200 dark:border-neutral-800 pb-2.5">
+                            <span class="text-[12px] font-medium text-[#86868b]">Última lectura</span>
+                            <span id="result-type"
+                                class="text-[10px] font-bold bg-neutral-200 dark:bg-[#2d2d2e] px-2 py-0.5 rounded text-neutral-600 dark:text-neutral-400 font-mono">NINGUNO</span>
+                        </div>
+
+                        <div class="min-height-[80px] flex flex-col justify-center">
+                            <textarea id="result-text" readonly
+                                class="w-full bg-transparent border-none resize-none outline-none text-sm text-[#1d1d1f] dark:text-[#f5f5f7] font-mono leading-relaxed placeholder-neutral-400"
+                                rows="3"
+                                placeholder="Apunta con la cámara a un código QR o de barras para ver los datos extraídos automáticamente..."></textarea>
+                        </div>
+
+                        <!-- Botones de Acción sobre el Resultado -->
+                        <div id="result-actions"
+                            class="grid grid-cols-2 gap-2 opacity-40 pointer-events-none transition-opacity">
+                            <button id="btn-copy-result" onclick="copyResultText()"
+                                class="border border-[#d2d2d7] dark:border-[#424245] text-[#1d1d1f] dark:text-[#f5f5f7] hover:bg-black/5 dark:hover:bg-white/5 rounded-full py-2 text-xs font-medium transition-colors flex items-center justify-center gap-1.5">
+                                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                <span>Copiar datos</span>
+                            </button>
+                            <a id="btn-link-result" href="#" target="_blank"
+                                class="bg-[#0071e3] text-white hover:bg-[#0077ed] rounded-full py-2 text-xs font-medium transition-colors flex items-center justify-center gap-1.5 text-center hidden">
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                <span>Abrir Enlace</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Historial de capturas en la sesión -->
+                    <div class="flex-1 flex flex-col gap-2">
+                        <label class="text-[12px] font-medium text-[#86868b] px-1">Historial de escaneo local</label>
+                        <div id="history-box"
+                            class="flex-1 min-h-[140px] max-h-[180px] overflow-y-auto bg-white/50 dark:bg-[#161617]/40 border border-[#d2d2d7]/40 dark:border-[#424245]/40 rounded-2xl p-2 text-xs text-[#86868b] flex flex-col">
+                            <div id="history-empty" class="m-auto text-center py-4 opacity-60">
+                                <p>No hay lecturas registradas en esta sesión.</p>
+                            </div>
+                            <div id="history-list" class="w-full flex flex-col"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#f5f5f7] dark:bg-[#1d1d1f] py-8 px-6 text-center text-sm text-[#86868b]">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>Copyright © 2026 Mateo Alexander Chicas Villavicencio. Todos los derechos reservados.</p>
+            <div class="flex gap-4">
+                <a href="/pages/terms/index.html" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Términos</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/privacy/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Privacidad</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/services/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Servicios</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="mailto:info@mateochicas.com" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Soporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        let html5QrcodeScanner = null;
+        const lastScannedCodes = new Set(); // Prevenir lecturas repetidas consecutivas instantáneas
+
+        function startScanner() {
+            document.getElementById('camera-placeholder').classList.add('opacity-0');
+            setTimeout(() => {
+                document.getElementById('camera-placeholder').style.display = 'none';
+            }, 300);
+
+            const statusLabel = document.getElementById('scanner-status');
+            statusLabel.className = "text-[11px] text-green-500 font-medium flex items-center gap-1";
+            statusLabel.innerHTML = `<span class="w-2 h-2 rounded-full bg-green-500 inline-block animate-ping"></span> Transmitiendo cámara`;
+
+            html5QrcodeScanner = new Html5Qrcode("reader");
+
+            const config = {
+                fps: 15,
+                qrbox: (width, height) => {
+                    // Cuadrante adaptativo optimizado tanto para QR como para barras horizontales
+                    return { width: Math.min(width * 0.8, 280), height: Math.min(height * 0.5, 180) };
+                },
+                aspectRatio: 1.333334
+            };
+
+            // Iniciar usando la cámara trasera del dispositivo (environment)
+            html5QrcodeScanner.start(
+                { facingMode: "environment" },
+                config,
+                onScanSuccess,
+                onScanFailure
+            ).then(() => {
+                document.getElementById('btn-stop').disabled = false;
+                document.getElementById('btn-stop').classList.remove('opacity-40');
+            }).catch(err => {
+                console.error("Error al iniciar cámara: ", err);
+                statusLabel.className = "text-[11px] text-red-500 font-medium flex items-center gap-1";
+                statusLabel.innerHTML = `Error de acceso a periférico`;
+                stopScanner();
+            });
+        }
+
+        function stopScanner() {
+            if (html5QrcodeScanner) {
+                html5QrcodeScanner.stop().then(() => {
+                    html5QrcodeScanner = null;
+                    resetScannerUI();
+                }).catch(err => console.error("Error al detener el flujo: ", err));
+            } else {
+                resetScannerUI();
+            }
+        }
+
+        function resetScannerUI() {
+            document.getElementById('camera-placeholder').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('camera-placeholder').classList.remove('opacity-0');
+            }, 50);
+
+            const statusLabel = document.getElementById('scanner-status');
+            statusLabel.className = "text-[11px] text-amber-500 font-medium flex items-center gap-1";
+            statusLabel.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span> Escáner en pausa`;
+
+            document.getElementById('btn-stop').disabled = true;
+            document.getElementById('btn-stop').classList.add('opacity-40');
+        }
+
+        function onScanSuccess(decodedText, decodedResult) {
+            // Validar si es idéntico al último escaneo de los últimos 2 segundos para no duplicar alertas acústicas/visuales
+            if (document.getElementById('result-text').value === decodedText) return;
+
+            // Cambiar textos y tipos detectados
+            document.getElementById('result-text').value = decodedText;
+
+            let formatName = "CÓDIGO";
+            if (decodedResult && decodedResult.result && decodedResult.result.format) {
+                formatName = decodedResult.result.format.formatName;
+            }
+            document.getElementById('result-type').textContent = formatName;
+
+            // Habilitar contenedor de acciones
+            const actionsBox = document.getElementById('result-actions');
+            actionsBox.classList.remove('opacity-40', 'pointer-events-none');
+
+            // Analizar si el contenido es un enlace válido
+            const linkBtn = document.getElementById('btn-link-result');
+            const isUrl = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(decodedText.trim());
+
+            if (isUrl) {
+                let cleanUrl = decodedText.trim();
+                if (!/^https?:\/\//i.test(cleanUrl)) {
+                    cleanUrl = 'https://' + cleanUrl;
+                }
+                linkBtn.href = cleanUrl;
+                linkBtn.classList.remove('hidden');
+            } else {
+                linkBtn.classList.add('hidden');
+            }
+
+            // Registrar en el historial de la interfaz
+            addBarcodeToHistory(decodedText, formatName);
+        }
+
+        function onScanFailure(error) {
+            // El motor busca constantemente frames válidos. Los fallos silenciosos son esperados.
+        }
+
+        function copyResultText() {
+            const txt = document.getElementById('result-text').value;
+            if (!txt) return;
+
+            navigator.clipboard.writeText(txt).then(() => {
+                const copyBtn = document.getElementById('btn-copy-result');
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-green-500"></i><span class="text-green-500 font-medium">¡Copiado!</span>`;
+                lucide.createIcons();
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                    lucide.createIcons();
+                }, 2000);
+            });
+        }
+
+        function addBarcodeToHistory(text, type) {
+            document.getElementById('history-empty').style.display = 'none';
+            const list = document.getElementById('history-list');
+
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
+            const item = document.createElement('div');
+            item.className = 'history-item py-2 px-2 flex justify-between items-center hover:bg-black/5 dark:hover:bg-white/5 rounded-lg cursor-pointer';
+            item.onclick = () => {
+                document.getElementById('result-text').value = text;
+                document.getElementById('result-type').textContent = type;
+                document.getElementById('result-actions').classList.remove('opacity-40', 'pointer-events-none');
+            };
+
+            item.innerHTML = `
+                <div class="flex flex-col gap-0.5 truncate max-w-[75%]">
+                    <span class="font-mono text-[#1d1d1f] dark:text-[#f5f5f7] truncate">${text}</span>
+                    <span class="text-[10px] text-[#86868b] font-bold">${type}</span>
+                </div>
+                <span class="text-[10px] font-mono text-[#86868b]">${timeStr}</span>
+            `;
+
+            // Insertar al inicio de la lista
+            list.insertBefore(item, list.firstChild);
+        }
+    </script>
+</body>
+
+</html>

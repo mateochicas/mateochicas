@@ -1,0 +1,931 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8Q819MR8K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-S8Q819MR8K');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9607008311974097"
+        crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-9607008311974097">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo Alexander Chicas Villavicencio | Image Gradient Studio</title>
+    <meta name="description" id="seo-description"
+        content="Genera fondos con gradientes para tus diseños de forma gratuita y sin limites.">
+    <meta name="keywords"
+        content="Mateo Chicas, Mateo Alexander Chicas Villavicencio, imagenes, gradientes, fondos, fondos degradados, gradientes infinitos">
+    <link rel="canonical" href="https://www.mateochicas.com/tools/img-gradient/">
+    <link rel="icon" type="image/png" id="favicon" href="/src/nav-icon-black.png">
+    <script src="/src/js/tailwindcss.js"></script>
+    <script type="module" src="https://api.mateochicas.com/js/auth-login.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateFavicon();
+        });
+        function updateFavicon() {
+            const favicon = document.getElementById('favicon');
+            if (favicon) {
+                if (document.documentElement.classList.contains('dark')) {
+                    favicon.href = '/src/nav-icon-white.png';
+                } else {
+                    favicon.href = '/src/nav-icon-black.png';
+                }
+            }
+        }
+        window.addEventListener('DOMContentLoaded', updateFavicon);
+    </script>
+    <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
+    <script src="/src/js/lucide.min.js"></script>
+
+    <style>
+        :root {
+            --apple-blue: #0071e3;
+            --apple-dark: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-border: #d2d2d7;
+        }
+
+        * {
+            font-family: 'Google Sans', sans-serif !important;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--apple-dark);
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .dark body {
+            background-color: #000000;
+            color: #f5f5f7;
+        }
+
+        .apple-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            border-bottom: 1px solid var(--apple-border);
+            font-size: 12px;
+            color: var(--apple-dark);
+        }
+
+        .dark .apple-nav {
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid #424245;
+            color: #f5f5f7;
+        }
+
+        .link-apple {
+            color: var(--apple-blue);
+            text-decoration: none;
+        }
+
+        .link-apple:hover {
+            text-decoration: underline;
+        }
+
+        .text-hero {
+            font-size: clamp(34px, 6vw, 46px);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.015em;
+        }
+
+        .flat-card {
+            background-color: var(--apple-light-gray);
+            border-radius: 32px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+        }
+
+        @media (min-width: 768px) {
+            .flat-card {
+                padding: 40px;
+            }
+        }
+
+        .dark .flat-card {
+            background-color: #161617;
+            border: 1px solid #2d2d2e;
+        }
+
+        /* Envoltorio exterior fijo para que el lienzo no rompa la maqueta */
+        .canvas-wrapper-outer {
+            width: 100%;
+            height: 460px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 28px;
+            padding: 16px;
+        }
+
+        .dark .canvas-wrapper-outer {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Contenedor del Lienzo que cambia dinámicamente con transiciones fluidas */
+        .gradient-canvas-container {
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            background: #ffffff;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            touch-action: none;
+            transition: aspect-ratio 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1), height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Estados de Aspect Ratio Dinámicos controlados por JS */
+        .ratio-1-1 {
+            aspect-ratio: 1 / 1;
+            width: auto;
+            height: 100%;
+        }
+
+        .ratio-9-16 {
+            aspect-ratio: 9 / 16;
+            width: auto;
+            height: 100%;
+        }
+
+        .ratio-16-9 {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            height: auto;
+        }
+
+        .ratio-3-2 {
+            aspect-ratio: 3 / 2;
+            width: 100%;
+            height: auto;
+        }
+
+        .gradient-mesh-render {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .noise-overlay {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.06;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .mesh-node {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+            cursor: move;
+            transform: translate(-50%, -50%);
+            z-index: 30;
+            transition: left 0.1s ease, top 0.1s ease;
+            /* Pequeño amortiguador para cuando cambia el layout */
+        }
+
+        .mesh-node::after {
+            content: '';
+            position: absolute;
+            inset: 4px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+        }
+
+        .mesh-node.active {
+            border-color: #0071e3;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.3), 0 6px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        .segmented-control {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 3px;
+            border-radius: 9999px;
+            display: flex;
+            width: 100%;
+        }
+
+        .dark .segmented-control {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .segment-btn {
+            flex: 1;
+            padding: 7px 10px;
+            font-size: 11px;
+            font-weight: 500;
+            border-radius: 9999px;
+            transition: all 0.2s ease;
+            color: var(--apple-gray);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .segment-btn.active {
+            background: #ffffff;
+            color: var(--apple-dark);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        }
+
+        .dark .segment-btn.active {
+            background: #2d2d2e;
+            color: #f5f5f7;
+        }
+
+        .color-dot-wrapper {
+            border: 2px solid transparent;
+            padding: 2px;
+            border-radius: 50%;
+            transition: border-color 0.2s ease;
+        }
+
+        .color-dot-wrapper.selected {
+            border-color: #0071e3;
+        }
+
+        .color-dot-node {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .color-dot-node input[type="color"] {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 4px;
+            background: #d2d2d7;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .dark input[type="range"] {
+            background: #424245;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1px solid #d2d2d7;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .dark input[type="range"]::-webkit-slider-thumb {
+            background: #f5f5f7;
+            border: 1px solid #424245;
+        }
+
+        /* Botón estilo iOS de Relación de Aspecto */
+        .aspect-btn {
+            background: #ffffff;
+            border: 1px solid var(--apple-border);
+            padding: 12px;
+            border-radius: 16px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+        }
+
+        .dark .aspect-btn {
+            background: rgba(45, 45, 46, 0.4);
+            border-color: #424245;
+        }
+
+        .aspect-btn:hover {
+            border-color: var(--apple-blue);
+            transform: translateY(-1px);
+        }
+
+        .aspect-btn.active {
+            border-color: var(--apple-blue);
+            background: rgba(0, 113, 227, 0.04);
+            box-shadow: 0 4px 12px rgba(0, 113, 227, 0.08);
+        }
+
+        .dark .aspect-btn.active {
+            background: rgba(0, 113, 227, 0.15);
+        }
+
+        .palette-chip {
+            width: 100%;
+            height: 38px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.15s ease;
+        }
+
+        .palette-chip:hover {
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navegación -->
+    <nav
+        class="fixed top-0 w-full h-11 bg-[#f5f5f7]/80 dark:bg-[#161617]/80 backdrop-blur-md z-50 border-b border-[#d2d2d7] dark:border-[#424245]">
+        <div class="max-w-[1024px] mx-auto h-full px-6 flex justify-between items-center">
+
+            <!-- Logo a la IZQUIERDA -->
+            <a href="/" class="flex items-center opacity-90 hover:opacity-100 transition-opacity">
+                <img src="/src/svg/logo.svg" alt="Mateo Chicas" class="h-[22px] w-auto dark:invert">
+            </a>
+
+            <!-- Navegación Escritorio (DERECHA) -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/index.html#servicios"
+                    class="text-[12px] text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-black dark:hover:text-white transition-colors">Servicios</a>
+                <a href="/index.html#herramientas"
+                    class="text-[12px] text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-black dark:hover:text-white transition-colors">Herramientas</a>
+                <a href="/pages/account/index.html" id="nav-account-link" class="hidden text-[12px] text-[#0066cc] transition-all duration-300 opacity-0">Mi Cuenta</a>
+
+                <button id="auth-btn" class="bg-black dark:bg-white text-white dark:text-black px-3 py-1 rounded-full text-[12px] font-medium hover:opacity-80 transition-all flex items-center gap-2 opacity-0 pointer-events-none duration-300">
+                    <img src="/src/svg/google-icon.svg" alt="G" class="w-3 h-3">
+                    <span id="btn-text">Iniciar Sesión</span>
+                </button>
+            </div>
+
+            <!-- Botón Menú Móvil (DERECHA) -->
+            <button id="menu-toggle" class="md:hidden p-1 text-[#1d1d1f] dark:text-[#f5f5f7]">
+                <i data-lucide="more-horizontal"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu"
+            class="hidden absolute top-11 left-0 w-full bg-[#f5f5f7] dark:bg-[#161617] border-b border-[#d2d2d7] dark:border-[#424245] p-6 flex flex-col gap-6 md:hidden text-center">
+            <a href="/index.html#servicios" class="text-sm">Servicios</a>
+            <a href="/index.html#herramientas" class="text-sm">Herramientas</a>
+            <a href="/pages/account/index.html" id="nav-account-link-mobile" class="hidden text-sm text-[#0066cc] transition-all duration-300 opacity-0">Mi Cuenta</a>
+
+            <div class="flex justify-center">
+                <button id="auth-btn-mobile" class="bg-black dark:bg-white text-white dark:text-black px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 opacity-0 pointer-events-none duration-300">
+                    <img src="/src/svg/google-icon.svg" alt="G" class="w-3 h-3">
+                    <span id="btn-text-mobile">Iniciar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-24 px-4 max-w-6xl mx-auto">
+
+        <div class="text-center mb-8">
+            <h1 class="text-hero mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">Image Gradient</h1>
+            <p class="text-sm text-[#86868b] max-w-xl mx-auto font-normal">Estudio avanzado de mallas cromáticas con
+                simulación de grano analógico y estructuración física de encuadres por relación de aspecto.</p>
+        </div>
+
+        <div class="flat-card">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+                <!-- LIENZO DE RENDER (Columna Izquierda) -->
+                <div class="lg:col-span-7 flex flex-col gap-4 w-full">
+                    <div class="flex justify-between items-center px-1">
+                        <span class="text-[12px] font-medium text-[#86868b]">Lienzo interactivo de nodos de color</span>
+                        <span id="active-node-badge"
+                            class="text-[11px] bg-[#0071e3]/10 text-[#0071e3] px-2.5 py-0.5 rounded-full font-medium">Nodo
+                            1 Activo</span>
+                    </div>
+
+                    <!-- Envoltorio Estabilizador Fijo -->
+                    <div class="canvas-wrapper-outer border border-neutral-200/50 dark:border-neutral-800/80">
+                        <!-- Canvas Box con Relación de Aspecto Variable -->
+                        <div id="canvas-container" class="gradient-canvas-container ratio-16-9">
+                            <div id="mesh-render" class="gradient-mesh-render"></div>
+                            <div id="noise-layer" class="noise-overlay"
+                                style="background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E&quot;); opacity: 0.06;">
+                            </div>
+
+                            <!-- Nodos Arrastrables -->
+                            <div id="node-0" class="mesh-node active" style="top: 25%; left: 25%;"></div>
+                            <div id="node-1" class="mesh-node" style="top: 25%; left: 75%;"></div>
+                            <div id="node-2" class="mesh-node" style="top: 75%; left: 25%;"></div>
+                            <div id="node-3" class="mesh-node" style="top: 75%; left: 75%;"></div>
+                        </div>
+                    </div>
+
+                    <!-- MÓDULO CORREGIDO: SELECCIÓN POR RELACIÓN DE ASPECTO / ENCUADRE -->
+                    <div
+                        class="flex flex-col gap-3 bg-white dark:bg-[#2d2d2e]/30 p-5 rounded-2xl border border-[#d2d2d7]/50 dark:border-[#424245]/50">
+                        <div class="flex flex-col">
+                            <span class="text-xs font-semibold text-[#1d1d1f] dark:text-[#f5f5f7]">Tipo de Encuadre
+                                (Relación de Aspecto)</span>
+                            <span class="text-[11px] text-[#86868b]">Ajusta las proporciones físicas del lienzo de
+                                trabajo y del archivo final extraído.</span>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-1">
+                            <button id="aspect-16-9" class="aspect-btn active flex flex-col gap-0.5"
+                                onclick="changeCanvasAspectRatio('16-9')">
+                                <span class="text-xs font-bold text-[#1d1d1f] dark:text-[#f5f5f7]">16:9</span>
+                            </button>
+                            <button id="aspect-9-16" class="aspect-btn flex flex-col gap-0.5"
+                                onclick="changeCanvasAspectRatio('9-16')">
+                                <span class="text-xs font-bold text-[#1d1d1f] dark:text-[#f5f5f7]">9:16</span>
+                            </button>
+                            <button id="aspect-1-1" class="aspect-btn flex flex-col gap-0.5"
+                                onclick="changeCanvasAspectRatio('1-1')">
+                                <span class="text-xs font-bold text-[#1d1d1f] dark:text-[#f5f5f7]">1:1</span>
+                            </button>
+                            <button id="aspect-3-2" class="aspect-btn flex flex-col gap-0.5"
+                                onclick="changeCanvasAspectRatio('3-2')">
+                                <span class="text-xs font-bold text-[#1d1d1f] dark:text-[#f5f5f7]">3:2</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTROLES AVANZADOS (Columna Derecha) -->
+                <div class="lg:col-span-5 flex flex-col gap-5 w-full">
+
+                    <!-- Configuración Atributos del Nodo Activo -->
+                    <div
+                        class="bg-white dark:bg-[#2d2d2e]/40 border border-[#d2d2d7]/60 dark:border-[#424245]/50 rounded-2xl p-4 flex flex-col gap-4">
+                        <span class="text-xs font-semibold text-[#1d1d1f] dark:text-[#f5f5f7]">Parámetros de Mezcla (Por
+                            Nodo)</span>
+
+                        <!-- Mini Selector de cuál nodo editar -->
+                        <div class="flex justify-between items-center bg-neutral-100 dark:bg-[#2d2d2e] p-2 rounded-xl">
+                            <span class="text-xs text-[#86868b]">Editar Nodo:</span>
+                            <div class="flex gap-2">
+                                <div id="wrapper-dot-0" class="color-dot-wrapper selected" onclick="setActiveNode(0)">
+                                    <div class="color-dot-node" id="dot-0"><input type="color" id="input-color-0"
+                                            value="#ff5e62" oninput="updateNodeProperty(0, 'color', this.value)"></div>
+                                </div>
+                                <div id="wrapper-dot-1" class="color-dot-wrapper" onclick="setActiveNode(1)">
+                                    <div class="color-dot-node" id="dot-1"><input type="color" id="input-color-1"
+                                            value="#ff9966" oninput="updateNodeProperty(1, 'color', this.value)"></div>
+                                </div>
+                                <div id="wrapper-dot-2" class="color-dot-wrapper" onclick="setActiveNode(2)">
+                                    <div class="color-dot-node" id="dot-2"><input type="color" id="input-color-2"
+                                            value="#7f00ff" oninput="updateNodeProperty(2, 'color', this.value)"></div>
+                                </div>
+                                <div id="wrapper-dot-3" class="color-dot-wrapper" onclick="setActiveNode(3)">
+                                    <div class="color-dot-node" id="dot-3"><input type="color" id="input-color-3"
+                                            value="#e100ff" oninput="updateNodeProperty(3, 'color', this.value)"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Barra de Radio / Difusión -->
+                        <div class="flex flex-col gap-1.5">
+                            <div class="flex justify-between text-xs font-medium text-[#86868b]">
+                                <span>Radio de Expansión</span>
+                                <span id="radius-val">70%</span>
+                            </div>
+                            <input type="range" id="node-radius" min="20" max="150" value="70"
+                                oninput="updateActiveNodeSlider('radius', this.value)">
+                        </div>
+
+                        <!-- Barra de Opacidad -->
+                        <div class="flex flex-col gap-1.5">
+                            <div class="flex justify-between text-xs font-medium text-[#86868b]">
+                                <span>Opacidad de Inyección</span>
+                                <span id="opacity-val">100%</span>
+                            </div>
+                            <input type="range" id="node-opacity" min="10" max="100" value="100"
+                                oninput="updateActiveNodeSlider('opacity', this.value)">
+                        </div>
+                    </div>
+
+                    <!-- Modificador de Textura de Grano -->
+                    <div
+                        class="bg-white dark:bg-[#2d2d2e]/40 border border-[#d2d2d7]/60 dark:border-[#424245]/50 rounded-2xl p-4 flex flex-col gap-3">
+                        <div class="flex justify-between text-xs font-semibold text-[#1d1d1f] dark:text-[#f5f5f7]">
+                            <span class="flex items-center gap-1"><i data-lucide="waves"
+                                    class="w-3.5 h-3.5 text-neutral-500"></i> Grano de Película Analógico</span>
+                            <span id="grain-val">6%</span>
+                        </div>
+                        <input type="range" id="grain-slider" min="0" max="25" value="6"
+                            oninput="adjustGrainTexture(this.value)">
+                    </div>
+
+                    <!-- Extractor de Muestras desde Foto Externa -->
+                    <div
+                        class="bg-white dark:bg-[#2d2d2e]/30 border border-[#d2d2d7]/60 dark:border-[#424245]/50 rounded-2xl p-4 flex flex-col gap-3">
+                        <label class="text-[12px] font-medium text-[#86868b]">Inyector Cromático de Imágenes</label>
+                        <div
+                            class="border border-dashed border-[#d2d2d7] dark:border-[#424245] rounded-xl p-3 text-center relative hover:border-[#0071e3] transition-colors">
+                            <input type="file" id="photo-upload" class="absolute inset-0 opacity-0 cursor-pointer"
+                                accept="image/*" onchange="extractColorsFromPhoto(this)">
+                            <div class="flex items-center justify-center gap-2 text-xs text-[#86868b]">
+                                <i data-lucide="upload" class="w-4 h-4"></i>
+                                <span class="font-medium text-[#1d1d1f] dark:text-[#f5f5f7]">Cargar foto para clonar
+                                    paleta</span>
+                            </div>
+                        </div>
+                        <div id="photo-palette-box" class="flex flex-col gap-2 hidden">
+                            <span class="text-[10px] font-bold text-[#86868b] uppercase">Toca un color para asignarlo al
+                                nodo activo:</span>
+                            <div class="grid grid-cols-5 gap-2" id="photo-palette-grid"></div>
+                        </div>
+                    </div>
+
+                    <!-- Configuración de Escala / Exportación -->
+                    <div
+                        class="bg-white dark:bg-[#2d2d2e]/30 border border-[#d2d2d7]/70 dark:border-[#424245]/60 rounded-2xl p-3.5 flex flex-col gap-2.5">
+                        <div class="flex justify-between items-center text-xs">
+                            <label class="font-medium text-[#86868b]">Resolución de Descarga</label>
+                            <span id="export-resolution-label" class="font-mono text-[#0071e3] text-[11px]">1x (Lienzo
+                                Nativo)</span>
+                        </div>
+                        <div class="segmented-control">
+                            <button class="segment-btn active" id="scale-1" onclick="changeDensityScale(1)">1x</button>
+                            <button class="segment-btn" id="scale-2" onclick="changeDensityScale(2)">2x
+                                (Retina)</button>
+                            <button class="segment-btn" id="scale-4" onclick="changeDensityScale(4)">4x (HQ
+                                Print)</button>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="flex flex-col gap-2">
+                        <button id="copy-css-btn" onclick="copyCSSCodePro()"
+                            class="w-full border border-[#d2d2d7] dark:border-[#424245] text-[#1d1d1f] dark:text-[#f5f5f7] hover:bg-black/5 dark:hover:bg-white/5 rounded-full py-2 text-xs font-medium transition-colors flex items-center justify-center gap-2">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span>Copiar Código CSS</span>
+                        </button>
+                        <button id="download-png-btn" onclick="triggerProPNGExport()"
+                            class="w-full bg-[#1d1d1f] dark:bg-[#f5f5f7] text-white dark:text-[#1d1d1f] hover:opacity-90 rounded-full py-2.5 text-xs font-medium transition-colors flex items-center justify-center gap-2 shadow-sm">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                            <span>Descargar PNG Estructurado</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#f5f5f7] dark:bg-[#1d1d1f] py-8 px-6 text-center text-sm text-[#86868b]">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>Copyright © 2026 Mateo Alexander Chicas Villavicencio. Todos los derechos reservados.</p>
+            <div class="flex gap-4">
+                <a href="/pages/terms/index.html" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Términos</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/privacy/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Privacidad</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/services/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Servicios</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="mailto:info@mateochicas.com" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Soporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Nodos base interactivos
+        const nodes = [
+            { id: 0, x: 20, y: 20, color: '#ff5e62', radius: 90, opacity: 100 },
+            { id: 1, x: 80, y: 25, color: '#ff9966', radius: 85, opacity: 95 },
+            { id: 2, x: 25, y: 80, color: '#7f00ff', radius: 100, opacity: 90 },
+            { id: 3, x: 75, y: 75, color: '#e100ff', radius: 95, opacity: 100 }
+        ];
+
+        let activeNodeIndex = 0;
+        let exportDensityScale = 1;
+        let isDraggingNode = false;
+        let activeDragNodeObj = null;
+        let grainOpacityValue = 0.06;
+        let currentAspectRatio = '16-9'; // Formato inicial
+
+        const canvasBox = document.getElementById('canvas-container');
+
+        function initProGradientStudio() {
+            nodes.forEach((node, idx) => {
+                const dotElement = document.getElementById(`node-${node.id}`);
+                dotElement.style.left = `${node.x}%`;
+                dotElement.style.top = `${node.y}%`;
+                dotElement.style.backgroundColor = node.color;
+
+                document.getElementById(`input-color-${idx}`).value = node.color;
+                document.getElementById(`dot-${idx}`).style.backgroundColor = node.color;
+
+                dotElement.addEventListener('mousedown', (e) => startNodeDrag(e, node, dotElement));
+                dotElement.addEventListener('touchstart', (e) => startNodeDrag(e, node, dotElement), { passive: false });
+            });
+
+            window.addEventListener('mousemove', processNodeDrag);
+            window.addEventListener('touchmove', processNodeDrag, { passive: false });
+            window.addEventListener('mouseup', terminateNodeDrag);
+            window.addEventListener('touchend', terminateNodeDrag);
+
+            syncSliderInterface();
+            renderProMeshBackground();
+        }
+
+        function startNodeDrag(e, node, element) {
+            e.preventDefault();
+            isDraggingNode = true;
+            activeDragNodeObj = node;
+            setActiveNode(node.id);
+        }
+
+        function setActiveNode(index) {
+            activeNodeIndex = index;
+            document.querySelectorAll('.mesh-node').forEach((n, idx) => {
+                if (idx === index) n.classList.add('active');
+                else n.classList.remove('active');
+            });
+
+            document.querySelectorAll('.color-dot-wrapper').forEach((w, idx) => {
+                if (idx === index) w.classList.add('selected');
+                else w.classList.remove('selected');
+            });
+
+            document.getElementById('active-node-badge').textContent = `Nodo ${index + 1} Activo`;
+            syncSliderInterface();
+        }
+
+        function processNodeDrag(e) {
+            if (!isDraggingNode || !activeDragNodeObj) return;
+
+            const bounds = canvasBox.getBoundingClientRect();
+            let pointerX = e.clientX;
+            let pointerY = e.clientY;
+
+            if (e.touches && e.touches.length > 0) {
+                pointerX = e.touches[0].clientX;
+                pointerY = e.touches[0].clientY;
+            }
+
+            let pctX = ((pointerX - bounds.left) / bounds.width) * 100;
+            let pctY = ((pointerY - bounds.top) / bounds.height) * 100;
+
+            pctX = Math.max(0, Math.min(100, pctX));
+            pctY = Math.max(0, Math.min(100, pctY));
+
+            activeDragNodeObj.x = pctX;
+            activeDragNodeObj.y = pctY;
+
+            const dotElement = document.getElementById(`node-${activeDragNodeObj.id}`);
+            dotElement.style.left = `${pctX}%`;
+            dotElement.style.top = `${pctY}%`;
+
+            renderProMeshBackground();
+        }
+
+        function terminateNodeDrag() {
+            isDraggingNode = false;
+            activeDragNodeObj = null;
+        }
+
+        function syncSliderInterface() {
+            const currentObj = nodes[activeNodeIndex];
+            document.getElementById('node-radius').value = currentObj.radius;
+            document.getElementById('radius-val').textContent = `${currentObj.radius}%`;
+            document.getElementById('node-opacity').value = currentObj.opacity;
+            document.getElementById('opacity-val').textContent = `${currentObj.opacity}%`;
+        }
+
+        function updateNodeProperty(index, property, value) {
+            nodes[index][property] = value;
+            if (property === 'color') {
+                document.getElementById(`node-${index}`).style.backgroundColor = value;
+                document.getElementById(`dot-${index}`).style.backgroundColor = value;
+            }
+            renderProMeshBackground();
+        }
+
+        function updateActiveNodeSlider(property, value) {
+            nodes[activeNodeIndex][property] = parseInt(value);
+            if (property === 'radius') document.getElementById('radius-val').textContent = `${value}%`;
+            if (property === 'opacity') document.getElementById('opacity-val').textContent = `${value}%`;
+            renderProMeshBackground();
+        }
+
+        function adjustGrainTexture(value) {
+            grainOpacityValue = parseInt(value) / 100;
+            document.getElementById('grain-val').textContent = `${value}%`;
+            document.getElementById('noise-layer').style.opacity = grainOpacityValue;
+        }
+
+        // CAMBIO DINÁMICO DE RELACIÓN DE ASPECTO
+        function changeCanvasAspectRatio(ratioKey) {
+            document.querySelectorAll('.aspect-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`aspect-${ratioKey}`).classList.add('active');
+
+            // Limpiar clases de aspecto anteriores
+            canvasBox.classList.remove('ratio-1-1', 'ratio-9-16', 'ratio-16-9', 'ratio-3-2');
+
+            // Asignar nueva clase estructural
+            canvasBox.classList.add(`ratio-${ratioKey}`);
+            currentAspectRatio = ratioKey;
+
+            // Forzar renderizado para recalcular mallas tras el cambio de forma física
+            setTimeout(renderProMeshBackground, 50);
+        }
+
+        function generateProCSSString() {
+            let cssParts = [];
+            nodes.forEach(node => {
+                const r = parseInt(node.color.slice(1, 3), 16);
+                const g = parseInt(node.color.slice(3, 5), 16);
+                const b = parseInt(node.color.slice(5, 7), 16);
+                const alpha = node.opacity / 100;
+
+                cssParts.push(`radial-gradient(circle at ${node.x}% ${node.y}%, rgba(${r},${g},${b},${alpha}) 0%, rgba(${r},${g},${b},0) ${node.radius}%)`);
+            });
+            return cssParts.join(', ') + `, #ffffff`;
+        }
+
+        function renderProMeshBackground() {
+            document.getElementById('mesh-render').style.background = generateProCSSString();
+        }
+
+        function changeDensityScale(scale) {
+            exportDensityScale = scale;
+            document.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`scale-${scale}`).classList.add('active');
+
+            const label = document.getElementById('export-resolution-label');
+            label.textContent = `${scale}x (Multiplicador de Lienzo)`;
+        }
+
+        function extractColorsFromPhoto(input) {
+            if (!input.files || !input.files[0]) return;
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imageObj = new Image();
+                imageObj.onload = function () {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = 40; canvas.height = 40;
+                    ctx.drawImage(imageObj, 0, 0, 40, 40);
+
+                    const coordinates = [{ x: 8, y: 8 }, { x: 32, y: 8 }, { x: 20, y: 20 }, { x: 8, y: 32 }, { x: 32, y: 32 }];
+                    const hexCodes = [];
+                    coordinates.forEach(c => {
+                        const data = ctx.getImageData(c.x, c.y, 1, 1).data;
+                        const hex = "#" + ((1 << 24) + (data[0] << 16) + (data[1] << 8) + data[2]).toString(16).slice(1);
+                        if (!hexCodes.includes(hex)) hexCodes.push(hex);
+                    });
+
+                    while (hexCodes.length < 5) hexCodes.push('#ffffff');
+
+                    const grid = document.getElementById('photo-palette-grid');
+                    grid.innerHTML = '';
+                    hexCodes.slice(0, 5).forEach(color => {
+                        const chip = document.createElement('div');
+                        chip.className = 'palette-chip shadow-sm';
+                        chip.style.backgroundColor = color;
+                        chip.onclick = () => {
+                            updateNodeProperty(activeNodeIndex, 'color', color);
+                            document.getElementById(`input-color-${activeNodeIndex}`).value = color;
+                        };
+                        grid.appendChild(chip);
+                    });
+                    document.getElementById('photo-palette-box').classList.remove('hidden');
+                };
+                imageObj.src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function copyCSSCodePro() {
+            const cssBlock = `background: ${generateProCSSString()};`;
+            navigator.clipboard.writeText(cssBlock).then(() => {
+                const btn = document.getElementById('copy-css-btn');
+                const original = btn.innerHTML;
+                btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-green-500"></i><span class="text-green-500">¡Código Copiado!</span>`;
+                lucide.createIcons();
+                setTimeout(() => { btn.innerHTML = original; lucide.createIcons(); }, 2000);
+            });
+        }
+
+        // EXPORTACIÓN MATEMÁTICA SEGÚN ASPECT RATIO SELECCIONADO
+        function triggerProPNGExport() {
+            let baseWidth = 1200;
+            let baseHeight = 800;
+
+            // Determinar dimensiones base según la relación de aspecto activa
+            if (currentAspectRatio === '1-1') { baseWidth = 1200; baseHeight = 1200; }
+            else if (currentAspectRatio === '9-16') { baseWidth = 720; baseHeight = 1280; }
+            else if (currentAspectRatio === '16-9') { baseWidth = 1920; baseHeight = 1080; }
+            else if (currentAspectRatio === '3-2') { baseWidth = 1200; baseHeight = 800; }
+
+            const exportWidth = baseWidth * exportDensityScale;
+            const exportHeight = baseHeight * exportDensityScale;
+
+            const canvas = document.createElement('canvas');
+            canvas.width = exportWidth;
+            canvas.height = exportHeight;
+            const ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, exportWidth, exportHeight);
+
+            nodes.forEach(node => {
+                const realX = (node.x / 100) * exportWidth;
+                const realY = (node.y / 100) * exportHeight;
+                const maxDimension = Math.max(exportWidth, exportHeight);
+                const realRadius = (node.radius / 100) * maxDimension * 0.85;
+
+                const radialGradient = ctx.createRadialGradient(realX, realY, 0, realX, realY, realRadius);
+
+                const r = parseInt(node.color.slice(1, 3), 16);
+                const g = parseInt(node.color.slice(3, 5), 16);
+                const b = parseInt(node.color.slice(5, 7), 16);
+                const alpha = node.opacity / 100;
+
+                radialGradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${alpha})`);
+                radialGradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+
+                ctx.fillStyle = radialGradient;
+                ctx.fillRect(0, 0, exportWidth, exportHeight);
+            });
+
+            if (grainOpacityValue > 0) {
+                const imgData = ctx.getImageData(0, 0, exportWidth, exportHeight);
+                const data = imgData.data;
+                const totalPixels = data.length;
+
+                for (let i = 0; i < totalPixels; i += 4) {
+                    const noiseFactor = (Math.random() - 0.5) * (grainOpacityValue * 255);
+                    data[i] = Math.max(0, Math.min(255, data[i] + noiseFactor));
+                    data[i + 1] = Math.max(0, Math.min(255, data[i + 1] + noiseFactor));
+                    data[i + 2] = Math.max(0, Math.min(255, data[i + 2] + noiseFactor));
+                }
+                ctx.putImageData(imgData, 0, 0);
+            }
+
+            const anchor = document.createElement('a');
+            anchor.download = `photogradient-format-${currentAspectRatio}-${exportDensityScale}x.png`;
+            anchor.href = canvas.toDataURL('image/png');
+            anchor.click();
+        }
+
+        window.addEventListener('load', initProGradientStudio);
+    </script>
+</body>
+
+</html>

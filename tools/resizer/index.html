@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8Q819MR8K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-S8Q819MR8K');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9607008311974097"
+        crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-9607008311974097">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo Chicas | Resizer</title>
+    <meta name="description"
+        content="Redimensiona tus imágenes de forma masiva o individual localmente. Ajusta píxeles, porcentajes y formatos de salida como PNG, JPEG y WebP instantáneamente.">
+    <meta name="keywords"
+        content="Mateo Chicas, Mateo Alexander Chicas Villavicencio, redimensionar imagenes, optimizar fotos, cambiar tamaño imagen online, resize image local">
+    <link class="flex-grow" rel="canonical" href="https://www.mateochicas.com/tools/resizer/">
+    <link rel="icon" type="image/png" id="favicon" href="/src/favicon/nav-icon-black.png">
+
+    <script src="/src/js/tailwindcss.js"></script>
+    <script type="module" src="https://api.mateochicas.com/js/login-tool.js"></script>
+    <script type="module" src="https://api.mateochicas.com/js/auth-login.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateFavicon();
+        });
+        function updateFavicon() {
+            const favicon = document.getElementById('favicon');
+            if (favicon) {
+                if (document.documentElement.classList.contains('dark')) {
+                    favicon.href = '/src/favicon/nav-icon-white.png';
+                } else {
+                    favicon.href = '/src/favicon/nav-icon-black.png';
+                }
+            }
+        }
+        window.addEventListener('DOMContentLoaded', updateFavicon);
+    </script>
+
+    <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
+    <script src="/src/js/lucide.min.js"></script>
+
+    <style>
+        :root {
+            --apple-blue: #0071e3;
+            --apple-dark: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-border: #d2d2d7;
+        }
+
+        * {
+            font-family: 'Google Sans', sans-serif !important;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--apple-dark);
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease;
+            /* CORRECCIÓN: Estructura Flexbox para empujar el footer al fondo */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark body {
+            background-color: #000000;
+            color: #f5f5f7;
+        }
+
+        /* CORRECCIÓN: El contenedor principal se expande para ocupar todo el espacio disponible */
+        main {
+            flex: 1;
+        }
+
+        .apple-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            font-size: 12px;
+            color: var(--apple-dark);
+        }
+
+        .dark .apple-nav {
+            background: rgba(0, 0, 0, 0.82);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            color: #f5f5f7;
+        }
+
+        .link-apple {
+            color: var(--apple-blue);
+            text-decoration: none;
+        }
+
+        .link-apple:hover {
+            text-decoration: underline;
+        }
+
+        .text-hero {
+            font-size: clamp(32px, 5vw, 42px);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -0.022em;
+        }
+
+        .tool-card {
+            background-color: var(--apple-light-gray);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.02);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.01);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dark .tool-card {
+            background-color: #161617;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .aspect-preview-box {
+            background-image: linear-gradient(45deg, #eaeaea 25%, transparent 25%), linear-gradient(-45deg, #eaeaea 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #eaeaea 75%), linear-gradient(-45deg, transparent 75%, #eaeaea 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+        }
+
+        .dark .aspect-preview-box {
+            background-image: linear-gradient(45deg, #1f1f22 25%, transparent 25%), linear-gradient(-45deg, #1f1f22 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #1f1f22 75%), linear-gradient(-45deg, transparent 75%, #1f1f22 75%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navegación -->
+    <nav
+        class="fixed top-0 w-full h-11 bg-[#f5f5f7]/80 dark:bg-[#161617]/80 backdrop-blur-md z-50 border-b border-[#d2d2d7] dark:border-[#424245]">
+        <div class="max-w-[1024px] mx-auto h-full px-6 flex justify-between items-center">
+
+            <!-- Logo a la IZQUIERDA -->
+            <a href="/" class="flex items-center opacity-90 hover:opacity-100 transition-opacity">
+                <img src="/src/svg/logo.svg" alt="Mateo Chicas" class="h-[22px] w-auto dark:invert">
+            </a>
+
+            <!-- Navegación Escritorio (DERECHA) -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/index.html#servicios"
+                    class="text-[12px] text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-black dark:hover:text-white transition-colors">Servicios</a>
+                <a href="/index.html#herramientas"
+                    class="text-[12px] text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-black dark:hover:text-white transition-colors">Herramientas</a>
+                <a href="/pages/account/index.html" id="nav-account-link" class="hidden text-[12px] text-[#0066cc] transition-all duration-300 opacity-0">Mi Cuenta</a>
+
+                <button id="auth-btn" class="bg-black dark:bg-white text-white dark:text-black px-3 py-1 rounded-full text-[12px] font-medium hover:opacity-80 transition-all flex items-center gap-2 opacity-0 pointer-events-none duration-300">
+                    <img src="/src/svg/google-icon.svg" alt="G" class="w-3 h-3">
+                    <span id="btn-text">Iniciar Sesión</span>
+                </button>
+            </div>
+
+            <!-- Botón Menú Móvil (DERECHA) -->
+            <button id="menu-toggle" class="md:hidden p-1 text-[#1d1d1f] dark:text-[#f5f5f7]">
+                <i data-lucide="more-horizontal"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu"
+            class="hidden absolute top-11 left-0 w-full bg-[#f5f5f7] dark:bg-[#161617] border-b border-[#d2d2d7] dark:border-[#424245] p-6 flex flex-col gap-6 md:hidden text-center">
+            <a href="/index.html#servicios" class="text-sm">Servicios</a>
+            <a href="/index.html#herramientas" class="text-sm">Herramientas</a>
+            <a href="/pages/account/index.html" id="nav-account-link-mobile" class="hidden text-sm text-[#0066cc] transition-all duration-300 opacity-0">Mi Cuenta</a>
+
+            <div class="flex justify-center">
+                <button id="auth-btn-mobile" class="bg-black dark:bg-white text-white dark:text-black px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 opacity-0 pointer-events-none duration-300">
+                    <img src="/src/svg/google-icon.svg" alt="G" class="w-3 h-3">
+                    <span id="btn-text-mobile">Iniciar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-24 pb-20 px-6 max-w-5xl mx-auto">
+
+        <!-- Encabezado -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-8">
+            <div>
+                <h1 class="text-hero text-[#1d1d1f] dark:text-[#f5f5f7]">Resizer</h1>
+                <p class="text-xs text-[#86868b] mt-1">Modifica dimensiones, relaciones de aspecto y peso de imágenes en
+                    tu hardware de manera segura.</p>
+            </div>
+
+            <div
+                class="flex bg-neutral-200/60 dark:bg-neutral-900 p-0.5 rounded-full border border-neutral-300/20 dark:border-neutral-800/20">
+                <button onclick="switchUnit('px')" id="btn-unit-px"
+                    class="px-4 py-1.5 text-[11px] font-semibold rounded-full bg-white dark:bg-[#161617] text-neutral-800 dark:text-neutral-200 shadow-sm transition-all">Píxeles</button>
+                <button onclick="switchUnit('percent')" id="btn-unit-percent"
+                    class="px-4 py-1.5 text-[11px] font-semibold rounded-full text-neutral-500 dark:text-neutral-400 hover:opacity-80 transition-all">Porcentaje</button>
+            </div>
+        </div>
+
+        <!-- CONTENEDOR INTEGRADO -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Lienzo / Previsualización de Imagen -->
+            <div
+                class="lg:col-span-2 tool-card p-4 flex flex-col justify-center min-h-[320px] relative overflow-hidden">
+                <div id="drop-zone"
+                    class="w-full h-full min-h-[300px] border border-dashed border-neutral-300/80 dark:border-neutral-800 rounded-xl flex flex-col items-center justify-center p-6 text-center relative aspect-preview-box transition-colors">
+                    <input type="file" id="image-input" class="absolute inset-0 opacity-0 cursor-pointer"
+                        accept="image/*">
+
+                    <!-- Estado Inicial Vacio -->
+                    <div id="preview-placeholder" class="flex flex-col items-center">
+                        <div
+                            class="w-10 h-10 bg-white dark:bg-blue-950/30 text-[#0071e3] rounded-xl flex items-center justify-center mb-3 shadow-sm">
+                            <i data-lucide="image" class="w-5 h-5"></i>
+                        </div>
+                        <p class="text-xs font-semibold text-[#1d1d1f] dark:text-[#f5f5f7]">Arrastra tu imagen aquí o
+                            haz clic para buscar</p>
+                        <p class="text-[10px] text-[#86868b] mt-0.5">Soporta PNG, JPEG, WebP</p>
+                    </div>
+
+                    <!-- Estado con Imagen Cargada -->
+                    <img id="preview-img" class="hidden max-h-[320px] object-contain rounded-lg shadow-sm z-10"
+                        alt="Previsualización">
+                </div>
+            </div>
+
+            <!-- Panel de Control de Parámetros de Salida -->
+            <div class="flex flex-col justify-between gap-4 tool-card p-5">
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-[10px] font-bold uppercase tracking-wider text-[#86868b]">Configuración de
+                        Redimensión
+                    </h3>
+
+                    <!-- Inputs de Dimensión Dinámicos -->
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex flex-col gap-1">
+                            <label id="label-width"
+                                class="text-[10px] font-bold text-[#86868b] uppercase tracking-wide">Ancho (px)</label>
+                            <input type="number" id="input-width" disabled
+                                class="w-full text-xs font-semibold p-2 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl text-neutral-800 dark:text-neutral-200 outline-none focus:border-[#0071e3]">
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label id="label-height"
+                                class="text-[10px] font-bold text-[#86868b] uppercase tracking-wide">Alto (px)</label>
+                            <input type="number" id="input-height" disabled
+                                class="w-full text-xs font-semibold p-2 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl text-neutral-800 dark:text-neutral-200 outline-none focus:border-[#0071e3]">
+                        </div>
+                    </div>
+
+                    <!-- Mantener relación de aspecto -->
+                    <label class="flex items-center gap-2 cursor-pointer py-1 select-none">
+                        <input type="checkbox" id="check-ratio" checked
+                            class="rounded border-neutral-300 text-[#0071e3] focus:ring-0 w-3.5 h-3.5 bg-white dark:bg-neutral-900">
+                        <span class="text-[11px] font-medium text-neutral-600 dark:text-neutral-400">Mantener relación
+                            de aspecto</span>
+                    </label>
+
+                    <hr class="border-neutral-200/60 dark:border-neutral-800/60 my-1">
+
+                    <!-- Formato y Calidad -->
+                    <div class="flex flex-col gap-3">
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[10px] font-bold text-[#86868b] uppercase tracking-wide">Formato de
+                                salida</label>
+                            <select id="select-format"
+                                class="w-full text-xs font-semibold p-2 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-xl text-neutral-800 dark:text-neutral-200 outline-none cursor-pointer">
+                                <option value="image/png">PNG (Sin pérdida)</option>
+                                <option value="image/jpeg">JPEG (Compreso)</option>
+                                <option value="image/webp">WebP (Eficiente)</option>
+                            </select>
+                        </div>
+
+                        <div id="box-quality" class="flex flex-col gap-1 hidden">
+                            <div
+                                class="flex justify-between text-[10px] font-bold text-[#86868b] uppercase tracking-wide">
+                                <span>Calidad</span>
+                                <span id="val-quality">80%</span>
+                            </div>
+                            <input type="range" id="input-quality" min="1" max="100" value="80"
+                                class="w-full accent-[#0071e3] bg-neutral-300 dark:bg-neutral-800 h-1 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de ejecución -->
+                <button onclick="processAndDownload()" id="btn-download" disabled
+                    class="w-full bg-[#0071e3] disabled:opacity-40 disabled:pointer-events-none text-white py-2.5 px-4 rounded-xl text-xs font-semibold hover:bg-[#0077ed] flex items-center justify-center gap-2 shadow-sm transition-all mt-4">
+                    <i data-lucide="download" class="w-3.5 h-3.5"></i> Redimensionar y Descargar
+                </button>
+            </div>
+        </div>
+
+        <!-- Metadata informativa de la imagen cargada -->
+        <div id="meta-panel"
+            class="hidden mt-4 bg-neutral-100 dark:bg-[#161617] p-3 rounded-xl border border-neutral-200/30 dark:border-neutral-800/40 flex flex-wrap gap-6 text-[11px] font-mono text-[#86868b]">
+            <div><span class="font-bold text-neutral-700 dark:text-neutral-300">Archivo:</span> <span
+                    id="meta-name">-</span></div>
+            <div><span class="font-bold text-neutral-700 dark:text-neutral-300">Original:</span> <span
+                    id="meta-dims">-</span></div>
+            <div><span class="font-bold text-neutral-700 dark:text-neutral-300">Peso original:</span> <span
+                    id="meta-size">-</span></div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#f5f5f7] dark:bg-[#1d1d1f] py-8 px-6 text-center text-sm text-[#86868b]">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>Copyright © 2026 Mateo Alexander Chicas Villavicencio. Todos los derechos reservados.</p>
+            <div class="flex gap-4">
+                <a href="/pages/terms/index.html" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Términos</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/privacy/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Privacidad</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/services/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Servicios</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="mailto:info@mateochicas.com" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Soporte</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        lucide.createIcons();
+
+        let currentUnit = 'px'; // px | percent
+        let originalWidth = 0;
+        let originalHeight = 0;
+        let aspectRatio = 1;
+        let sourceImage = null;
+
+        const imageInput = document.getElementById('image-input');
+        const dropZone = document.getElementById('drop-zone');
+        const previewPlaceholder = document.getElementById('preview-placeholder');
+        const previewImg = document.getElementById('preview-img');
+
+        const inputWidth = document.getElementById('input-width');
+        const inputHeight = document.getElementById('input-height');
+        const checkRatio = document.getElementById('check-ratio');
+        const selectFormat = document.getElementById('select-format');
+        const boxQuality = document.getElementById('box-quality');
+        const inputQuality = document.getElementById('input-quality');
+        const valQuality = document.getElementById('val-quality');
+        const btnDownload = document.getElementById('btn-download');
+
+        // Escuchas de carga de archivos
+        imageInput.addEventListener('change', (e) => { if (e.target.files.length > 0) loadFile(e.target.files[0]); });
+        dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('border-[#0071e3]'); });
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('border-[#0071e3]'));
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-[#0071e3]');
+            if (e.dataTransfer.files.length > 0) loadFile(e.dataTransfer.files[0]);
+        });
+
+        function loadFile(file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                sourceImage = new Image();
+                sourceImage.src = event.target.result;
+                sourceImage.onload = () => {
+                    originalWidth = sourceImage.width;
+                    originalHeight = sourceImage.height;
+                    aspectRatio = originalWidth / originalHeight;
+
+                    // Mostrar preview
+                    previewPlaceholder.classList.add('hidden');
+                    previewImg.classList.remove('hidden');
+                    previewImg.src = sourceImage.src;
+
+                    // Desbloquear controles
+                    inputWidth.disabled = false;
+                    inputHeight.disabled = false;
+                    btnDownload.disabled = false;
+
+                    // Setear metadatos del archivo
+                    document.getElementById('meta-panel').classList.remove('hidden');
+                    document.getElementById('meta-name').textContent = file.name;
+                    document.getElementById('meta-dims').textContent = `${originalWidth} x ${originalHeight} px`;
+                    document.getElementById('meta-size').textContent = `${(file.size / 1024).toFixed(1)} KB`;
+
+                    resetDimensions();
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function resetDimensions() {
+            if (currentUnit === 'px') {
+                inputWidth.value = originalWidth;
+                inputHeight.value = originalHeight;
+            } else {
+                inputWidth.value = 100;
+                inputHeight.value = 100;
+            }
+        }
+
+        // Conmutar unidades entre Pixeles y Porcentaje
+        function switchUnit(unit) {
+            currentUnit = unit;
+            const labelW = document.getElementById('label-width');
+            const labelH = document.getElementById('label-height');
+
+            if (unit === 'px') {
+                document.getElementById('btn-unit-px').className = "px-4 py-1.5 text-[11px] font-semibold rounded-full bg-white dark:bg-[#161617] text-neutral-800 dark:text-neutral-200 shadow-sm transition-all";
+                document.getElementById('btn-unit-percent').className = "px-4 py-1.5 text-[11px] font-semibold rounded-full text-neutral-500 dark:text-neutral-400 hover:opacity-80 transition-all";
+                labelW.textContent = "Ancho (px)";
+                labelH.textContent = "Alto (px)";
+            } else {
+                document.getElementById('btn-unit-percent').className = "px-4 py-1.5 text-[11px] font-semibold rounded-full bg-white dark:bg-[#161617] text-neutral-800 dark:text-neutral-200 shadow-sm transition-all";
+                document.getElementById('btn-unit-px').className = "px-4 py-1.5 text-[11px] font-semibold rounded-full text-neutral-500 dark:text-neutral-400 hover:opacity-80 transition-all";
+                labelW.textContent = "Ancho (%)";
+                labelH.textContent = "Alto (%)";
+            }
+            if (sourceImage) resetDimensions();
+        }
+
+        // Controladores de cambio en inputs numéricos (Manejo de Aspect Ratio)
+        inputWidth.addEventListener('input', () => {
+            if (!checkRatio.checked || !sourceImage) return;
+            let val = parseFloat(inputWidth.value) || 0;
+            if (currentUnit === 'px') {
+                inputHeight.value = Math.round(val / aspectRatio) || '';
+            } else {
+                inputHeight.value = val;
+            }
+        });
+
+        inputHeight.addEventListener('input', () => {
+            if (!checkRatio.checked || !sourceImage) return;
+            let val = parseFloat(inputHeight.value) || 0;
+            if (currentUnit === 'px') {
+                inputWidth.value = Math.round(val * aspectRatio) || '';
+            } else {
+                inputWidth.value = val;
+            }
+        });
+
+        // Visibilidad del slider de calidad según el formato elegido
+        selectFormat.addEventListener('change', () => {
+            if (selectFormat.value === 'image/png') {
+                boxQuality.classList.add('hidden');
+            } else {
+                boxQuality.classList.remove('hidden');
+            }
+        });
+
+        inputQuality.addEventListener('input', () => {
+            valQuality.textContent = `${inputQuality.value}%`;
+        });
+
+        // Motor local de escalado y renderizado
+        function processAndDownload() {
+            if (!sourceImage) return;
+
+            let targetWidth = parseFloat(inputWidth.value) || originalWidth;
+            let targetHeight = parseFloat(inputHeight.value) || originalHeight;
+
+            if (currentUnit === 'percent') {
+                targetWidth = (originalWidth * targetWidth) / 100;
+                targetHeight = (originalHeight * targetHeight) / 100;
+            }
+
+            // Canvas virtual para el renderizado libre de UI
+            const canvas = document.createElement('canvas');
+            canvas.width = targetWidth;
+            canvas.height = targetHeight;
+            const ctx = canvas.getContext('2d');
+
+            // Optimización de renderizado según tamaño nativo
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+
+            ctx.drawImage(sourceImage, 0, 0, targetWidth, targetHeight);
+
+            // Generación de Blob y descarga
+            const format = selectFormat.value;
+            const quality = format === 'image/png' ? undefined : (parseFloat(inputQuality.value) / 100);
+
+            const dl = document.createElement('a');
+            let ext = format.split('/')[1];
+            if (ext === 'jpeg') ext = 'jpg';
+
+            dl.download = `resized-image.${ext}`;
+            dl.href = canvas.toDataURL(format, quality);
+            dl.click();
+        }
+    </script>
+</body>
+
+</html>

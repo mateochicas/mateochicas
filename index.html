@@ -1,0 +1,465 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8Q819MR8K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-S8Q819MR8K');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9607008311974097"
+        crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-9607008311974097">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Básico -->
+    <title>Mateo Chicas | Herramientas Web y Desarrollo</title>
+    <meta name="description"
+        content="Descubre las herramientas web gratuitas desarrolladas por Mateo Chicas. Generadores de QR, códigos de barras y utilidades online rápidas y eficientes.">
+    <meta name="keywords"
+        content="Mateo Chicas, Mateo Alexander Chicas Villavicencio, herramientas web, generador QR, código de barras, escáner online, desarrollo web">
+
+    <!-- Open Graph / Facebook (Para cuando compartas el link) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.mateochicas.com/">
+    <meta property="og:title" content="Mateo Chicas | Herramientas Web y Desarrollo">
+    <meta property="og:description"
+        content="Herramientas web gratuitas y eficientes: QR, códigos de barras y más utilidades online creadas para optimizar tu día a día.">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mateo Chicas | Herramientas Web y Desarrollo">
+    <meta name="twitter:description" content="Descubre las herramientas web gratuitas desarrolladas por Mateo Chicas.">
+    <link rel="icon" type="image/png" id="favicon" href="/src/favicon/nav-icon-black.png">
+    <script src="/src/js/tailwindcss.js"></script>
+    <script type="module" src="https://api.mateochicas.com/js/auth-login.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <script>
+        // Detect system preference and apply dark class
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateFavicon();
+        });
+        function updateFavicon() {
+            const favicon = document.getElementById('favicon');
+            if (document.documentElement.classList.contains('dark')) {
+                favicon.href = '/src/favicon/nav-icon-white.png';
+            } else {
+                favicon.href = '/src/favicon/nav-icon-black.png';
+            }
+        }
+        // Initial call
+        updateFavicon();
+    </script>
+    <script src="/src/js/lucide.min.js"></script>
+    <style>
+        :root {
+            --apple-blue: #0071e3;
+            --apple-dark: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-border: #d2d2d7;
+        }
+
+        * {
+            font-family: 'Google Sans', sans-serif !important;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--apple-dark);
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .dark body {
+            background-color: #000000;
+            color: #f5f5f7;
+        }
+
+        .apple-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            border-bottom: 1px solid var(--apple-border);
+            font-size: 12px;
+            color: var(--apple-dark);
+        }
+
+        .dark .apple-nav {
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid #424245;
+            color: #f5f5f7;
+        }
+
+        .link-apple {
+            color: var(--apple-blue);
+            text-decoration: none;
+        }
+
+        .link-apple:hover {
+            text-decoration: underline;
+        }
+
+        .text-hero {
+            font-size: clamp(48px, 8vw, 80px);
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -0.015em;
+        }
+
+        .btn-primary {
+            background: var(--apple-blue);
+            color: #fff;
+            border-radius: 980px;
+            padding: 11px 21px;
+            font-size: 17px;
+            font-weight: 400;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #0077ed;
+        }
+
+        .flat-card {
+            background-color: var(--apple-light-gray);
+            border-radius: 32px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark .flat-card {
+            background-color: #161617;
+            border: 1px solid #2d2d2e;
+        }
+
+        .flat-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            background-color: #ffffff;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.06);
+            border-color: rgba(0, 113, 227, 0.2);
+        }
+
+        .dark .flat-card:hover {
+            background-color: #1d1d1f;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 113, 227, 0.4);
+        }
+
+        .pp-9UV3BKXUEC4PC {
+            text-align: center;
+            border: none;
+            border-radius: 1.5rem;
+            min-width: 11.625rem;
+            padding: 0 2rem;
+            height: 2.625rem;
+            font-weight: bold;
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Google Sans', sans-serif !important;
+            font-size: 1rem;
+            line-height: 1.25rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .dark .pp-9UV3BKXUEC4PC {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .pp-9UV3BKXUEC4PC:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-900">
+
+    <nav
+        class="fixed top-0 w-full h-11 bg-[#f5f5f7]/80 dark:bg-[#161617]/80 backdrop-blur-md z-50 border-b border-[#d2d2d7] dark:border-[#424245]">
+        <div class="max-w-[1024px] mx-auto h-full px-6 flex justify-between items-center">
+
+            <!-- Logo a la IZQUIERDA -->
+            <a href="/" class="flex items-center opacity-90 hover:opacity-100 transition-opacity">
+                <img src="/src/svg/logo.svg" alt="Mateo Chicas" class="h-[22px] w-auto dark:invert">
+            </a>
+
+            <!-- Navegación Escritorio (DERECHA) -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#servicios"
+                    class="text-[12px] text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-black dark:hover:text-white transition-colors">Servicios</a>
+                <a href="#herramientas"
+                    class="text-[12px] text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-black dark:hover:text-white transition-colors">Herramientas</a>
+                <a href="/pages/account/index.html" id="nav-account-link"
+                    class="hidden text-[12px] text-[#0066cc] transition-all duration-300 opacity-0">Mi Cuenta</a>
+
+                <button id="auth-btn"
+                    class="bg-black dark:bg-white text-white dark:text-black px-3 py-1 rounded-full text-[12px] font-medium hover:opacity-80 transition-all flex items-center gap-2 opacity-0 pointer-events-none duration-300">
+                    <img src="/src/svg/google-icon.svg" alt="G" class="w-3 h-3">
+                    <span id="btn-text">Iniciar Sesión</span>
+                </button>
+            </div>
+
+            <!-- Botón Menú Móvil (DERECHA) -->
+            <button id="menu-toggle" class="md:hidden p-1 text-[#1d1d1f] dark:text-[#f5f5f7]">
+                <i data-lucide="more-horizontal"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu"
+            class="hidden absolute top-11 left-0 w-full bg-[#f5f5f7] dark:bg-[#161617] border-b border-[#d2d2d7] dark:border-[#424245] p-6 flex flex-col gap-6 md:hidden text-center">
+            <a href="#servicios" class="text-sm">Servicios</a>
+            <a href="#herramientas" class="text-sm">Herramientas</a>
+            <a href="/pages/account/index.html" id="nav-account-link-mobile"
+                class="hidden text-sm text-[#0066cc] transition-all duration-300 opacity-0">Mi Cuenta</a>
+
+            <div class="flex justify-center">
+                <button id="auth-btn-mobile"
+                    class="bg-black dark:bg-white text-white dark:text-black px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 opacity-0 pointer-events-none duration-300">
+                    <img src="/src/svg/google-icon.svg" alt="G" class="w-3 h-3">
+                    <span id="btn-text-mobile">Iniciar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="pt-32 pb-20 px-6 flex flex-col items-center text-center"
+            style="background-image: url(/src/image/bg.webp); background-repeat: no-repeat; background-size: cover; background-position: center;">
+            <div class="max-w-4xl flex flex-col items-center">
+                <!-- Logo reemplazando al h1 -->
+                <div class="mb-6">
+                    <img src="/src/svg/logo.svg" alt="Mateo Chicas Logo"
+                        class="w-96 md:w-100 h-auto object-contain invert">
+                </div>
+
+                <h2 class="text-2xl md:text-3xl text-white mb-8 font-normal">Software Developer & IT Expert</h2>
+                <p class="text-lg text-white mb-10 max-w-2xl mx-auto">
+                    Mateo Alexander Chicas Villavicencio, Especialista en desarrollo de soluciones tecnológicas
+                    premium y soporte informático integral. Transformo desafíos técnicos en infraestructuras digitales
+                    sólidas.
+                </p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="mailto:info@mateochicas.com" class="btn-primary">
+                        Contactar ahora
+                    </a>
+                    <a href="https://instagram.com/mateoalexanderchicas" target="_blank"
+                        class="link-apple text-[17px] flex items-center gap-1 text-white">
+                        Instagram <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nueva Sección de Herramientas -->
+        <section id="herramientas"
+            class="py-24 px-6 flex flex-col items-center bg-white dark:bg-black transition-colors duration-300">
+            <div class="max-w-5xl w-full">
+                <!-- Encabezado con link a la derecha estilo Servicios -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                    <div class="max-w-2xl">
+                        <h2
+                            class="text-4xl md:text-5xl font-semibold tracking-tight mb-4 text-[#1d1d1f] dark:text-[#f5f5f7]">
+                            Herramientas Gratuitas.
+                        </h2>
+                        <p class="text-xl text-[#86868b]">
+                            Utilidades online rápidas y eficientes desarrolladas para optimizar tu día a día.
+                        </p>
+                    </div>
+                    <a href="/tools/"
+                        class="inline-flex items-center gap-1 text-[#0071e3] hover:underline text-lg font-medium group shrink-0 whitespace-nowrap">
+                        Ver todas las herramientas
+                        <i data-lucide="chevron-right"
+                            class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200"></i>
+                    </a>
+                </div>
+
+                <!-- Bento Grid Asimétrico (Estilo Servicios Profesionales) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+
+                    <!-- 1. Generador QR (Tarjeta Horizontal Ancha - Ocupa 2 columnas) -->
+                    <a href="/tools/qr/"
+                        class="flat-card group md:col-span-2 flex flex-row items-center p-8 md:p-12 bg-[#f5f5f7] dark:bg-[#1c1c1e] rounded-3xl border dark:border-[#2c2c2e] hover:scale-[1.01] transition-all duration-300 gap-8 text-left">
+                        <div class="shrink-0">
+                            <i data-lucide="qr-code"
+                                class="text-[#0071e3] w-16 h-16 transition-transform group-hover:scale-105 duration-300"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-black dark:text-[#f5f5f7]">Generador QR.</h3>
+                            <p class="text-[#86868b] text-base leading-relaxed max-w-md">Crea códigos QR personalizados
+                                al instante con opciones avanzadas de descarga.</p>
+                        </div>
+                    </a>
+
+                    <!-- 2. Código de Barras (Tarjeta Vertical - Ocupa 1 columna) -->
+                    <a href="/tools/barcode/"
+                        class="flat-card group md:col-span-1 flex flex-col items-center justify-center p-8 md:p-12 bg-[#f5f5f7] dark:bg-[#1c1c1e] rounded-3xl border dark:border-[#2c2c2e] hover:scale-[1.01] transition-all duration-300 text-center">
+                        <div class="mb-6">
+                            <i data-lucide="barcode"
+                                class="text-[#0071e3] w-14 h-14 transition-transform group-hover:scale-105 duration-300"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-2 text-black dark:text-[#f5f5f7]">Código de Barras.</h3>
+                        <p class="text-[#86868b] text-base leading-relaxed">Genera códigos de barras en diferentes
+                            formatos estándar.</p>
+                    </a>
+
+                    <!-- 3. Escáner Online (Tarjeta Completa Abajo - Ocupa las 3 columnas) -->
+                    <a href="/tools/scanner/"
+                        class="flat-card group md:col-span-3 flex flex-col justify-between p-8 md:p-12 bg-[#f5f5f7] dark:bg-[#1c1c1e] rounded-3xl border dark:border-[#2c2c2e] hover:scale-[1.005] transition-all duration-300 text-left min-h-[220px] relative overflow-hidden">
+                        <div class="flex items-start justify-between w-full mb-6">
+                            <i data-lucide="scan"
+                                class="text-[#0071e3] w-12 h-12 transition-transform group-hover:scale-105 duration-300"></i>
+                            <!-- Badge superior derecho estilo UI/UX de la imagen -->
+                            <span
+                                class="text-[11px] font-semibold uppercase tracking-wider text-[#0071e3] bg-[#0071e3]/10 px-3 py-1 rounded-full border border-[#0071e3]/20">
+                                CÁMARA ONLINE
+                            </span>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-semibold mb-3 text-black dark:text-[#f5f5f7]">Escáner Online</h3>
+                            <p class="text-[#86868b] text-base leading-relaxed max-w-2xl">Escanea cualquier código de
+                                barras o QR directamente desde tu cámara web o móvil en tiempo real, sin instalar apps
+                                adicionales.</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="py-32 px-6 flex flex-col items-center">
+            <div class="max-w-5xl w-full">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div class="max-w-2xl">
+                        <h2 class="text-4xl md:text-5xl font-semibold mb-4 text-[#1d1d1f] dark:text-[#f5f5f7]">
+                            Servicios para negocios.</h2>
+                        <p class="text-xl text-[#86868b]">Soluciones diseñadas para el mundo digital
+                            negocios y emprendimientos.</p>
+                    </div>
+                    <a href="/pages/services/" class="link-apple text-lg font-medium flex items-center gap-1 group">
+                        Ver todos los servicios <i data-lucide="chevron-right"
+                            class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="flat-card md:col-span-2 flex-row items-center gap-8">
+                        <i data-lucide="code-2" class="text-[#0071e3] w-16 h-16 flex-shrink-0"></i>
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">Desarrollo
+                                Software.</h3>
+                            <p class="text-[#86868b] text-lg">
+                                Aplicaciones a medida y sistemas web escalables utilizando tecnologías modernas y diseño
+                                premium.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flat-card md:col-span-1 justify-center text-center">
+                        <i data-lucide="message-circle" class="text-[#0071e3] mx-auto mb-4 w-12 h-12"></i>
+                        <h3 class="text-2xl font-semibold mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">Menú WhatsApp.</h3>
+                        <p class="text-[#86868b] text-lg">
+                            Automatización inteligente basada en JSON.
+                        </p>
+                    </div>
+
+                    <div
+                        class="flat-card md:col-span-3 bg-white dark:bg-[#1c1c1e] shadow-xl border-gray-100 dark:border-[#2d2d2e]">
+                        <div class="flex justify-between items-start mb-6">
+                            <i data-lucide="layout" class="text-[#0071e3] w-12 h-12"></i>
+                            <span
+                                class="text-xs font-bold tracking-widest uppercase text-[#0071e3] bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">Diseño
+                                UI/UX</span>
+                        </div>
+                        <h3 class="text-3xl font-semibold mb-4 text-[#1d1d1f] dark:text-[#f5f5f7]">Web Personalizada
+                            Premium.</h3>
+                        <p class="text-[#86868b] text-xl max-w-3xl leading-relaxed">
+                            Landing pages de alto impacto optimizadas para conversión, velocidad y un diseño que cautiva
+                            a tus clientes desde el primer segundo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#f5f5f7] dark:bg-[#1d1d1f] py-8 px-6 text-center text-sm text-[#86868b]">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>Copyright © 2026 Mateo Alexander Chicas Villavicencio. Todos los derechos reservados.</p>
+            <div class="flex gap-4">
+                <a href="/pages/terms/index.html" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Términos</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/privacy/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Privacidad</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/services/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Servicios</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="mailto:info@mateochicas.com" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Soporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Inicializar iconos
+        lucide.createIcons();
+
+        // Scroll suave refinado
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 44,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

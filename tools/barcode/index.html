@@ -1,0 +1,672 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S8Q819MR8K"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-S8Q819MR8K');
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9607008311974097"
+        crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-9607008311974097">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mateo Chicas | Generador de Códigos de Barras Gratis</title>
+    <meta name="description"
+        content="Crea códigos de barras personalizados de forma gratuita y rápida con la herramienta online de Mateo Chicas. Compatible con múltiples formatos listos para imprimir.">
+    <meta name="keywords"
+        content="Mateo Chicas, Mateo Alexander Chicas Villavicencio, generador codigo de barras, crear codigo de barras, barcode generator, herramientas gratis">
+    <link rel="canonical" href="https://www.mateochicas.com/tools/barcode/">
+    <link rel="icon" type="image/png" id="favicon" href="/src/favicon/nav-icon-black.png">
+    <script src="/src/js/tailwindcss.js"></script>
+    <script type="module" src="https://api.mateochicas.com/js/auth-login.js"></script>
+    <script type="module" src="https://api.mateochicas.com/js/login-tool.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            updateFavicon();
+        });
+        function updateFavicon() {
+            const favicon = document.getElementById('favicon');
+            if (favicon) {
+                if (document.documentElement.classList.contains('dark')) {
+                    favicon.href = '/src/favicon/nav-icon-white.png';
+                } else {
+                    favicon.href = '/src/favicon/nav-icon-black.png';
+                }
+            }
+        }
+        window.addEventListener('DOMContentLoaded', updateFavicon);
+    </script>
+    <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
+    <script src="/src/js/lucide.min.js"></script>
+
+    <!-- Motor nativo ultra-estable para Códigos de Barras -->
+    <script src="/src/js/JsBarcode.all.min.js"></script>
+
+    <style>
+        :root {
+            --apple-blue: #0071e3;
+            --apple-dark: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-border: #d2d2d7;
+        }
+
+        * {
+            font-family: 'Google Sans', sans-serif !important;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--apple-dark);
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .dark body {
+            background-color: #000000;
+            color: #f5f5f7;
+        }
+
+        .apple-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            border-bottom: 1px solid var(--apple-border);
+            font-size: 12px;
+            color: var(--apple-dark);
+        }
+
+        .dark .apple-nav {
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid #424245;
+            color: #f5f5f7;
+        }
+
+        .link-apple {
+            color: var(--apple-blue);
+            text-decoration: none;
+        }
+
+        .link-apple:hover {
+            text-decoration: underline;
+        }
+
+        .text-hero {
+            font-size: clamp(34px, 6vw, 46px);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.015em;
+        }
+
+        .flat-card {
+            background-color: var(--apple-light-gray);
+            border-radius: 32px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+        }
+
+        @media (min-width: 768px) {
+            .flat-card {
+                padding: 40px;
+            }
+        }
+
+        .dark .flat-card {
+            background-color: #161617;
+            border: 1px solid #2d2d2e;
+        }
+
+        /* Contenedor de previsualización estricto sin scroll de ningún tipo */
+        .preview-box-rectangle {
+            background: #f5f5f7;
+            border: 1px solid var(--apple-border);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            width: 100%;
+            min-height: 260px;
+            margin: 0 auto;
+            overflow: hidden;
+            /* Cero barras de navegación */
+        }
+
+        .dark .preview-box-rectangle {
+            background: #1c1c1e;
+            border: 1px solid #2d2d2e;
+        }
+
+        /* Control segmentado deslizable */
+        .segmented-control {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 4px;
+            border-radius: 9999px;
+            display: flex;
+            width: 100%;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .segmented-control::-webkit-scrollbar {
+            display: none;
+        }
+
+        .dark .segmented-control {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .segment-btn {
+            flex: 1;
+            min-width: 80px;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 9999px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--apple-gray);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .segment-btn.active {
+            background: #ffffff;
+            color: var(--apple-dark);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .dark .segment-btn.active {
+            background: #2d2d2e;
+            color: #f5f5f7;
+        }
+
+        /* Área de previsualización responsiva: escala el contenido hacia abajo si es muy grande */
+        .barcode-display-area {
+            width: 100%;
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .barcode-wrapper {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border-radius: 12px;
+            max-width: 100%;
+            /* Se encoge para caber perfectamente */
+            box-sizing: border-box;
+        }
+
+        .barcode-wrapper svg {
+            width: 100%;
+            /* Forzamos al SVG a respetar los límites del padre sin salirse */
+            height: auto;
+            max-width: 100%;
+        }
+
+        .color-picker-wrapper input[type="color"] {
+            -webkit-appearance: none;
+            border: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            background: none;
+        }
+
+        .color-picker-wrapper input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        .color-picker-wrapper input[type="color"]::-webkit-color-swatch {
+            border: 2px solid var(--apple-border);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navegación -->
+    <nav
+        class="fixed top-0 w-full h-11 bg-[#f5f5f7]/80 dark:bg-[#161617]/80 backdrop-blur-md z-50 border-b border-[#d2d2d7] dark:border-[#424245]">
+        <div class="max-w-[1024px] mx-auto h-full px-6 flex justify-between items-center">
+
+            <!-- Logo a la IZQUIERDA -->
+            <a href="/" class="flex items-center opacity-90 hover:opacity-100 transition-opacity">
+                <img src="/src/svg/logo.svg" alt="Mateo Chicas" class="h-[22px] w-auto dark:invert">
+            </a>
+
+            <!-- Navegación Escritorio (DERECHA) -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="/index.html#servicios"
+                    class="text-[12px] text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-black dark:hover:text-white transition-colors">Servicios</a>
+                <a href="/index.html#herramientas"
+                    class="text-[12px] text-[#1d1d1f] dark:text-[#f5f5f7] hover:text-black dark:hover:text-white transition-colors">Herramientas</a>
+                <a href="/pages/account/index.html" id="nav-account-link"
+                    class="hidden text-[12px] text-[#0066cc] transition-all duration-300 opacity-0">Mi Cuenta</a>
+
+                <button id="auth-btn"
+                    class="bg-black dark:bg-white text-white dark:text-black px-3 py-1 rounded-full text-[12px] font-medium hover:opacity-80 transition-all flex items-center gap-2 opacity-0 pointer-events-none duration-300">
+                    <img src="/src/svg/google-icon.svg" alt="G" class="w-3 h-3">
+                    <span id="btn-text">Iniciar Sesión</span>
+                </button>
+            </div>
+
+            <!-- Botón Menú Móvil (DERECHA) -->
+            <button id="menu-toggle" class="md:hidden p-1 text-[#1d1d1f] dark:text-[#f5f5f7]">
+                <i data-lucide="more-horizontal"></i>
+            </button>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu"
+            class="hidden absolute top-11 left-0 w-full bg-[#f5f5f7] dark:bg-[#161617] border-b border-[#d2d2d7] dark:border-[#424245] p-6 flex flex-col gap-6 md:hidden text-center">
+            <a href="/index.html#servicios" class="text-sm">Servicios</a>
+            <a href="/index.html#herramientas" class="text-sm">Herramientas</a>
+            <a href="/pages/account/index.html" id="nav-account-link-mobile"
+                class="hidden text-sm text-[#0066cc] transition-all duration-300 opacity-0">Mi Cuenta</a>
+
+            <div class="flex justify-center">
+                <button id="auth-btn-mobile"
+                    class="bg-black dark:bg-white text-white dark:text-black px-5 py-2 rounded-full text-sm font-medium flex items-center gap-2 opacity-0 pointer-events-none duration-300">
+                    <img src="/src/svg/google-icon.svg" alt="G" class="w-3 h-3">
+                    <span id="btn-text-mobile">Iniciar Sesión</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-24 px-6 max-w-5xl mx-auto">
+
+        <div class="text-center mb-10">
+            <h1 class="text-hero mb-3 text-[#1d1d1f] dark:text-[#f5f5f7]">Códigos de Barras</h1>
+            <p class="text-md text-[#86868b] max-w-xl mx-auto font-normal">Genera codigos de barras universales de forma
+                gratuita libre de anuncios o suscripciones.</p>
+        </div>
+
+        <div class="flat-card">
+            <!-- Selector de formatos -->
+            <div class="segmented-control mb-8">
+                <button class="segment-btn active" id="type-CODE128"
+                    onclick="setBarcodeFormat('CODE128')">CODE128</button>
+                <button class="segment-btn" id="type-EAN13" onclick="setBarcodeFormat('EAN13')">EAN-13</button>
+                <button class="segment-btn" id="type-CODE39" onclick="setBarcodeFormat('CODE39')">CODE39</button>
+                <button class="segment-btn" id="type-ITF" onclick="setBarcodeFormat('ITF')">ITF</button>
+                <button class="segment-btn" id="type-MSI" onclick="setBarcodeFormat('MSI')">MSI</button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+                <!-- Panel Lateral Izquierdo: Configuración -->
+                <div class="lg:col-span-6 flex flex-col justify-between gap-6">
+
+                    <div class="flex flex-col gap-5">
+                        <!-- Input Principal -->
+                        <div class="flex flex-col gap-1.5">
+                            <div class="flex justify-between items-center px-2">
+                                <label class="text-[12px] font-medium text-[#86868b]">Contenido de datos</label>
+                                <span id="char-counter" class="text-[11px] text-[#86868b] font-mono">0 caracteres</span>
+                            </div>
+                            <input type="text" id="barcode-input"
+                                class="w-full px-5 py-3 bg-white dark:bg-[#2d2d2e] border border-[#d2d2d7] dark:border-[#424245] rounded-full outline-none focus:border-[#0071e3] text-sm text-[#1d1d1f] dark:text-[#f5f5f7] transition-colors"
+                                value="MATEO-CHICAS-2026" oninput="buildBarcode()">
+                            <span id="barcode-hint" class="text-[11px] text-[#86868b] px-2">Soporta cualquier
+                                combinación alfanumérica estándar.</span>
+                        </div>
+
+                        <!-- Parámetros Geométricos -->
+                        <div class="border-t border-[#d2d2d7]/60 dark:border-[#424245]/60 pt-4 flex flex-col gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="text-[12px] font-medium text-[#86868b] px-2">Grosor modular</label>
+                                    <input type="number" id="barcode-width" min="1" max="4" value="2"
+                                        class="w-full px-5 py-2.5 bg-white dark:bg-[#2d2d2e] border border-[#d2d2d7] dark:border-[#424245] rounded-full outline-none focus:border-[#0071e3] text-sm text-[#1d1d1f] dark:text-[#f5f5f7]"
+                                        oninput="buildBarcode()">
+                                </div>
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="text-[12px] font-medium text-[#86868b] px-2">Margen perimetral
+                                        (px)</label>
+                                    <input type="number" id="barcode-padding" min="10" max="100" value="40"
+                                        class="w-full px-5 py-2.5 bg-white dark:bg-[#2d2d2e] border border-[#d2d2d7] dark:border-[#424245] rounded-full outline-none focus:border-[#0071e3] text-sm text-[#1d1d1f] dark:text-[#f5f5f7]"
+                                        oninput="buildBarcode()">
+                                </div>
+                            </div>
+
+                            <!-- Paleta Estética -->
+                            <div
+                                class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white dark:bg-[#2d2d2e]/40 p-4 rounded-2xl border border-[#d2d2d7]/60 dark:border-[#424245]/50">
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="text-[12px] font-medium text-[#86868b]">Color del gráfico</label>
+                                    <div class="color-picker-wrapper flex items-center gap-2 mt-0.5">
+                                        <input type="color" id="fg-color" value="#1d1d1f" onchange="buildBarcode()">
+                                        <span class="text-xs text-[#86868b]">Barras y texto</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col gap-1.5">
+                                    <label class="text-[12px] font-medium text-[#86868b]">Fondo del módulo</label>
+                                    <div class="flex items-center gap-3 mt-0.5">
+                                        <div class="color-picker-wrapper flex items-center" id="color-picker-container">
+                                            <input type="color" id="bg-color" value="#ffffff" onchange="buildBarcode()">
+                                        </div>
+                                        <label class="flex items-center gap-1.5 cursor-pointer select-none">
+                                            <input type="checkbox" id="bg-transparent"
+                                                class="w-4 h-4 rounded text-[#0071e3] border-[#d2d2d7]"
+                                                onchange="toggleTransparent(this)">
+                                            <span class="text-xs text-[#1d1d1f] dark:text-[#f5f5f7]">Transparente</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        class="w-full bg-[#0071e3] hover:bg-[#0077ed] text-white rounded-full py-3 text-[14px] font-medium transition-colors flex items-center justify-center gap-2 shadow-sm"
+                        onclick="buildBarcode()">
+                        <span>Regenerar código</span>
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <!-- Panel Lateral Derecho: Preview (Ajuste visual perfecto) y Configuración de Exportación -->
+                <div class="lg:col-span-6 flex flex-col justify-between gap-5">
+
+                    <!-- Previsualizador Limpio sin barras de navegación internas -->
+                    <div class="preview-box-rectangle shadow-sm">
+                        <div class="barcode-display-area">
+                            <div id="barcode-target" class="w-full flex items-center justify-center"></div>
+                        </div>
+                    </div>
+
+                    <!-- Configuración de Tamaño del Archivo de Salida (Pregunta al usuario la escala) -->
+                    <div
+                        class="bg-white dark:bg-[#2d2d2e]/30 border border-[#d2d2d7]/70 dark:border-[#424245]/60 rounded-2xl p-4 flex flex-col gap-3">
+                        <div class="flex justify-between items-center">
+                            <label class="text-[12px] font-medium text-[#86868b]">Tamaño de exportación (Escala de
+                                Densidad)</label>
+                            <span id="resolution-estimate" class="text-[11px] font-mono text-[#0071e3]">Render
+                                Base</span>
+                        </div>
+                        <div class="segmented-control" style="background: rgba(0,0,0,0.03);">
+                            <button class="segment-btn active" id="scale-1" onclick="setTargetScale(1)">1x
+                                (Estándar)</button>
+                            <button class="segment-btn" id="scale-2" onclick="setTargetScale(2)">2x (Retina/HD)</button>
+                            <button class="segment-btn" id="scale-4" onclick="setTargetScale(4)">4x
+                                (Impresión/HQ)</button>
+                        </div>
+                    </div>
+
+                    <!-- Botones de Acción -->
+                    <div class="grid grid-cols-2 gap-3" id="action-wrapper">
+                        <button id="copy-btn"
+                            class="border border-[#d2d2d7] dark:border-[#424245] text-[#1d1d1f] dark:text-[#f5f5f7] hover:bg-black/5 dark:hover:bg-white/5 rounded-full py-2.5 text-xs font-medium transition-colors flex items-center justify-center gap-2"
+                            onclick="copyToClipboard()">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span>Copiar Imagen</span>
+                        </button>
+
+                        <button id="download-btn"
+                            class="bg-[#1d1d1f] dark:bg-[#f5f5f7] text-white dark:text-[#1d1d1f] hover:opacity-90 rounded-full py-2.5 text-xs font-medium transition-colors flex items-center justify-center gap-2"
+                            onclick="triggerDownload()">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                            <span>Descargar PNG</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#f5f5f7] dark:bg-[#1d1d1f] py-8 px-6 text-center text-sm text-[#86868b]">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p>Copyright © 2026 Mateo Alexander Chicas Villavicencio. Todos los derechos reservados.</p>
+            <div class="flex gap-4">
+                <a href="/pages/terms/index.html" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Términos</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/privacy/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Privacidad</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="/pages/services/index.html"
+                    class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Servicios</a>
+                <span class="text-[#d2d2d7]">|</span>
+                <a href="mailto:info@mateochicas.com" class="hover:text-[#1d1d1f] dark:hover:text-[#f5f5f7]">Soporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        let currentFormat = 'CODE128';
+        let exportScale = 1;
+
+        function setBarcodeFormat(format) {
+            currentFormat = format;
+            document.querySelectorAll('.segment-btn').forEach(btn => {
+                if (btn.id.startsWith('type-')) btn.classList.remove('active');
+            });
+            document.getElementById(`type-${format}`).classList.add('active');
+
+            const input = document.getElementById('barcode-input');
+            const hint = document.getElementById('barcode-hint');
+
+            if (format === 'EAN13') {
+                input.value = "1234567890128";
+                hint.textContent = "Requiere exactamente 13 dígitos numéricos.";
+            } else if (format === 'ITF') {
+                input.value = "12345678901234";
+                hint.textContent = "Requiere caracteres numéricos de longitud par.";
+            } else if (format === 'MSI') {
+                input.value = "987654321";
+                hint.textContent = "Formato numérico especial para control de inventarios.";
+            } else if (format === 'CODE39') {
+                input.value = "MATEO39";
+                hint.textContent = "Soporta letras en mayúsculas, números y símbolos básicos.";
+            } else {
+                input.value = "MATEO-CHICAS-2026";
+                hint.textContent = "Formato universal alfanumérico de alta densidad.";
+            }
+            buildBarcode();
+        }
+
+        function setTargetScale(scale) {
+            exportScale = scale;
+            document.querySelectorAll('.segment-btn').forEach(btn => {
+                if (btn.id.startsWith('scale-')) btn.classList.remove('active');
+            });
+            document.getElementById(`scale-${scale}`).classList.add('active');
+
+            const est = document.getElementById('resolution-estimate');
+            if (scale === 1) est.textContent = "Render Base";
+            if (scale === 2) est.textContent = "Doble Densidad (2x)";
+            if (scale === 4) est.textContent = "Alta Definición (4x)";
+        }
+
+        function toggleTransparent(checkbox) {
+            const pickerContainer = document.getElementById('color-picker-container');
+            if (checkbox.checked) {
+                pickerContainer.style.opacity = '0.4';
+                pickerContainer.style.pointerEvents = 'none';
+            } else {
+                pickerContainer.style.opacity = '1';
+                pickerContainer.style.pointerEvents = 'auto';
+            }
+            buildBarcode();
+        }
+
+        function buildBarcode() {
+            const container = document.getElementById('barcode-target');
+            if (!container || typeof JsBarcode === 'undefined') return;
+
+            container.innerHTML = '';
+            let payload = document.getElementById('barcode-input').value.trim();
+
+            document.getElementById('char-counter').textContent = `${payload.length} caracteres`;
+
+            if (!payload) {
+                document.getElementById('action-wrapper').style.opacity = '0.4';
+                return;
+            }
+
+            if (currentFormat === 'EAN13' && (!/^\d{13}$/.test(payload))) {
+                container.innerHTML = `<span class="text-xs text-red-500 font-medium text-center px-4">EAN-13 requiere exactamente 13 números.</span>`;
+                document.getElementById('action-wrapper').style.opacity = '0.4';
+                return;
+            }
+            if (currentFormat === 'ITF' && (!/^\d+$/.test(payload) || payload.length % 2 !== 0)) {
+                container.innerHTML = `<span class="text-xs text-red-500 font-medium text-center px-4">ITF requiere solo números y longitud de dígitos par.</span>`;
+                document.getElementById('action-wrapper').style.opacity = '0.4';
+                return;
+            }
+            if (currentFormat === 'MSI' && (!/^\d+$/.test(payload))) {
+                container.innerHTML = `<span class="text-xs text-red-500 font-medium text-center px-4">MSI requiere únicamente caracteres numéricos.</span>`;
+                document.getElementById('action-wrapper').style.opacity = '0.4';
+                return;
+            }
+
+            try {
+                const wrapper = document.createElement('div');
+                wrapper.className = 'barcode-wrapper';
+
+                const paddingUser = parseInt(document.getElementById('barcode-padding').value) || 40;
+                const isTransparent = document.getElementById('bg-transparent').checked;
+
+                wrapper.style.padding = `${paddingUser}px`;
+                wrapper.style.backgroundColor = isTransparent ? 'transparent' : document.getElementById('bg-color').value;
+
+                const svgElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                wrapper.appendChild(svgElement);
+                container.appendChild(wrapper);
+
+                const fgColor = document.getElementById('fg-color').value;
+                const lineWidth = parseFloat(document.getElementById('barcode-width').value) || 2;
+
+                JsBarcode(svgElement, payload, {
+                    format: currentFormat,
+                    lineColor: fgColor,
+                    background: "transparent",
+                    width: lineWidth,
+                    height: 52,
+                    displayValue: true,
+                    fontSize: 13,
+                    textMargin: 6
+                });
+
+                document.getElementById('action-wrapper').style.opacity = '1';
+            } catch (e) {
+                console.error(e);
+                container.innerHTML = `<span class="text-xs text-red-500 font-medium text-center">Error de caracteres para el formato actual.</span>`;
+                document.getElementById('action-wrapper').style.opacity = '0.4';
+            }
+        }
+
+        function generateScaledCanvas(callback) {
+            const svg = document.getElementById('barcode-target').querySelector('svg');
+            if (!svg) return;
+
+            const paddingUser = parseInt(document.getElementById('barcode-padding').value) || 40;
+            const isTransparent = document.getElementById('bg-transparent').checked;
+            const bgColor = document.getElementById('bg-color').value;
+
+            const serializer = new XMLSerializer();
+            const svgString = serializer.serializeToString(svg);
+            const svgBlob = new Blob([svgString], { type: "image/svg+xml;charset=utf-8" });
+            const URL = window.URL || window.webkitURL || window;
+            const blobURL = URL.createObjectURL(svgBlob);
+
+            const image = new Image();
+            image.onload = function () {
+                const canvas = document.createElement('canvas');
+                // Tomar dimensiones exactas reales del viewBox, ignorando la contracción de pantalla CSS
+                const svgWidth = svg.viewBox.baseVal.width || svg.getBoundingClientRect().width;
+                const svgHeight = svg.viewBox.baseVal.height || svg.getBoundingClientRect().height;
+
+                // Multiplicamos por la escala seleccionada por el usuario (1x, 2x, 4x)
+                canvas.width = (svgWidth + (paddingUser * 2)) * exportScale;
+                canvas.height = (svgHeight + (paddingUser * 2)) * exportScale;
+
+                const ctx = canvas.getContext('2d');
+                ctx.scale(exportScale, exportScale);
+
+                if (!isTransparent) {
+                    ctx.fillStyle = bgColor;
+                    ctx.fillRect(0, 0, canvas.width / exportScale, canvas.height / exportScale);
+                } else {
+                    ctx.clearRect(0, 0, canvas.width / exportScale, canvas.height / exportScale);
+                }
+
+                ctx.drawImage(image, paddingUser, paddingUser, svgWidth, svgHeight);
+                callback(canvas);
+                URL.revokeObjectURL(blobURL);
+            };
+            image.src = blobURL;
+        }
+
+        function triggerDownload() {
+            generateScaledCanvas((canvas) => {
+                const anchor = document.createElement('a');
+                anchor.download = `barcode-${currentFormat.toLowerCase()}-${exportScale}x.png`;
+                anchor.href = canvas.toDataURL('image/png');
+                anchor.click();
+            });
+        }
+
+        function copyToClipboard() {
+            generateScaledCanvas((canvas) => {
+                canvas.toBlob((blob) => {
+                    if (!blob) return;
+                    navigator.clipboard.write([
+                        new ClipboardItem({ "image/png": blob })
+                    ]).then(() => {
+                        const copyBtn = document.getElementById('copy-btn');
+                        const originalText = copyBtn.innerHTML;
+                        copyBtn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-green-500"></i><span class="text-green-500">¡Copiado!</span>`;
+                        setTimeout(() => { copyBtn.innerHTML = originalText; }, 2000);
+                    }).catch(err => console.error("Error al copiar imagen: ", err));
+                }, 'image/png');
+            });
+        }
+
+        window.addEventListener('load', buildBarcode);
+    </script>
+</body>
+
+</html>
