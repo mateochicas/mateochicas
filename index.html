@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -207,6 +207,18 @@
         .pp-9UV3BKXUEC4PC:hover {
             transform: translateY(-2px);
         }
+
+        /* Ocultar scrollbar para carruseles */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE y Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
     </style>
 </head>
 
@@ -262,7 +274,7 @@
     </nav>
 
     <main>
-        <section class="pt-32 pb-20 px-6 flex flex-col items-center text-center"
+        <section class="pt-24 pb-8 px-6 flex flex-col items-center text-center"
             style="background-image: url(/src/image/bg.webp); background-repeat: no-repeat; background-size: cover; background-position: center;">
             <div class="max-w-4xl flex flex-col items-center">
                 <!-- Logo reemplazando al h1 -->
@@ -291,7 +303,7 @@
 
         <!-- Nueva Sección de Herramientas -->
         <section id="herramientas"
-            class="py-24 px-6 flex flex-col items-center bg-white dark:bg-black transition-colors duration-300">
+            class="py-12 px-6 flex flex-col items-center bg-white dark:bg-black transition-colors duration-300">
             <div class="max-w-5xl w-full">
                 <!-- Encabezado con link a la derecha estilo Servicios -->
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -312,60 +324,107 @@
                     </a>
                 </div>
 
-                <!-- Bento Grid Asimétrico (Estilo Servicios Profesionales) -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+                <!-- Contenedor Carrusel Netflix -->
+                <div class="relative group w-full">
+                    <!-- Botón Izquierdo -->
+                    <button onclick="scrollCarousel('herramientas-carousel', -1)"
+                        class="absolute -left-5 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-black/60 hover:bg-white dark:hover:bg-black text-black dark:text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hidden md:flex items-center justify-center backdrop-blur-md border border-black/10 dark:border-white/10 shadow-xl hover:scale-110">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                    </button>
+                    <!-- Botón Derecho -->
+                    <button onclick="scrollCarousel('herramientas-carousel', 1)"
+                        class="absolute -right-5 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-black/60 hover:bg-white dark:hover:bg-black text-black dark:text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hidden md:flex items-center justify-center backdrop-blur-md border border-black/10 dark:border-white/10 shadow-xl hover:scale-110">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </button>
 
-                    <!-- 1. Generador QR (Tarjeta Horizontal Ancha - Ocupa 2 columnas) -->
-                    <a href="/tools/qr/"
-                        class="flat-card group md:col-span-2 flex flex-row items-center p-8 md:p-12 bg-[#f5f5f7] dark:bg-[#1c1c1e] rounded-3xl border dark:border-[#2c2c2e] hover:scale-[1.01] transition-all duration-300 gap-8 text-left">
-                        <div class="shrink-0">
-                            <i data-lucide="qr-code"
-                                class="text-[#0071e3] w-16 h-16 transition-transform group-hover:scale-105 duration-300"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-semibold mb-2 text-black dark:text-[#f5f5f7]">Generador QR.</h3>
-                            <p class="text-[#86868b] text-base leading-relaxed max-w-md">Crea códigos QR personalizados
-                                al instante con opciones avanzadas de descarga.</p>
-                        </div>
-                    </a>
-
-                    <!-- 2. Código de Barras (Tarjeta Vertical - Ocupa 1 columna) -->
-                    <a href="/tools/barcode/"
-                        class="flat-card group md:col-span-1 flex flex-col items-center justify-center p-8 md:p-12 bg-[#f5f5f7] dark:bg-[#1c1c1e] rounded-3xl border dark:border-[#2c2c2e] hover:scale-[1.01] transition-all duration-300 text-center">
-                        <div class="mb-6">
-                            <i data-lucide="barcode"
-                                class="text-[#0071e3] w-14 h-14 transition-transform group-hover:scale-105 duration-300"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-2 text-black dark:text-[#f5f5f7]">Código de Barras.</h3>
-                        <p class="text-[#86868b] text-base leading-relaxed">Genera códigos de barras en diferentes
-                            formatos estándar.</p>
-                    </a>
-
-                    <!-- 3. Escáner Online (Tarjeta Completa Abajo - Ocupa las 3 columnas) -->
-                    <a href="/tools/scanner/"
-                        class="flat-card group md:col-span-3 flex flex-col justify-between p-8 md:p-12 bg-[#f5f5f7] dark:bg-[#1c1c1e] rounded-3xl border dark:border-[#2c2c2e] hover:scale-[1.005] transition-all duration-300 text-left min-h-[220px] relative overflow-hidden">
-                        <div class="flex items-start justify-between w-full mb-6">
-                            <i data-lucide="scan"
-                                class="text-[#0071e3] w-12 h-12 transition-transform group-hover:scale-105 duration-300"></i>
-                            <!-- Badge superior derecho estilo UI/UX de la imagen -->
-                            <span
-                                class="text-[11px] font-semibold uppercase tracking-wider text-[#0071e3] bg-[#0071e3]/10 px-3 py-1 rounded-full border border-[#0071e3]/20">
-                                CÁMARA ONLINE
-                            </span>
-                        </div>
-                        <div>
-                            <h3 class="text-3xl font-semibold mb-3 text-black dark:text-[#f5f5f7]">Escáner Online</h3>
-                            <p class="text-[#86868b] text-base leading-relaxed max-w-2xl">Escanea cualquier código de
-                                barras o QR directamente desde tu cámara web o móvil en tiempo real, sin instalar apps
-                                adicionales.</p>
-                        </div>
-                    </a>
-
+                    <!-- Carrusel -->
+                    <div id="herramientas-carousel"
+                        class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-6 w-full pb-6 no-scrollbar px-6 scroll-smooth"
+                        style="-webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent); mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);">
+                        <!-- 1. Generador QR -->
+                        <a href="/tools/qr/"
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg border dark:border-[#2c2c2e] block">
+                            <img src="/src/image/tool_qr.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="Generador QR">
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-left">
+                                <div class="mb-4"><i data-lucide="qr-code" class="text-white w-10 h-10"></i></div>
+                                <h3 class="text-3xl font-semibold mb-2 text-white">Generador QR.</h3>
+                                <p class="text-gray-200 text-lg max-w-md">Crea códigos QR personalizados al instante con
+                                    opciones avanzadas de descarga.</p>
+                            </div>
+                        </a>
+                        <!-- 2. Código de Barras -->
+                        <a href="/tools/barcode/"
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg border dark:border-[#2c2c2e] block">
+                            <img src="/src/image/tool_barcode.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="Código de Barras">
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-left">
+                                <div class="mb-4"><i data-lucide="barcode" class="text-white w-10 h-10"></i></div>
+                                <h3 class="text-3xl font-semibold mb-2 text-white">Código de Barras.</h3>
+                                <p class="text-gray-200 text-lg">Genera códigos de barras estándar.</p>
+                            </div>
+                        </a>
+                        <!-- 3. Escáner Online -->
+                        <a href="/tools/scanner/"
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg border dark:border-[#2c2c2e] block">
+                            <img src="/src/image/tool_scanner.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="Escáner Online">
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-left">
+                                <div class="mb-4"><i data-lucide="scan" class="text-white w-10 h-10"></i></div>
+                                <h3 class="text-3xl font-semibold mb-2 text-white">Escáner Web.</h3>
+                                <p class="text-gray-200 text-lg">Escanea códigos con tu cámara.</p>
+                            </div>
+                        </a>
+                        <!-- 4. Conversor de Imágenes -->
+                        <a href="/tools/img-converter/"
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg border dark:border-[#2c2c2e] block">
+                            <img src="/src/image/tool_img.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="Conversor de Imágenes">
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-left">
+                                <div class="mb-4"><i data-lucide="image" class="text-white w-10 h-10"></i></div>
+                                <h3 class="text-3xl font-semibold mb-2 text-white">Conversor de Imágenes.</h3>
+                                <p class="text-gray-200 text-lg max-w-md">Convierte tus imágenes a WebP, PNG o JPG de
+                                    manera rápida y masiva.</p>
+                            </div>
+                        </a>
+                        <!-- 5. Quitar Fondo -->
+                        <a href="/tools/clearcut/"
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg border dark:border-[#2c2c2e] block">
+                            <img src="/src/image/tool_bgremover.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="Quitar Fondo">
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-left">
+                                <div class="flex items-start justify-between w-full mb-6">
+                                    <i data-lucide="scissors" class="text-white w-12 h-12"></i>
+                                    <span
+                                        class="text-[11px] font-bold uppercase tracking-wider text-white bg-[#0071e3] px-3 py-1 rounded-full">NUEVO</span>
+                                </div>
+                                <h3 class="text-4xl font-semibold mb-3 text-white">Quitar Fondo</h3>
+                                <p class="text-gray-200 text-xl max-w-2xl leading-relaxed">Elimina el fondo de cualquier
+                                    fotografía en segundos usando inteligencia artificial, directamente desde tu
+                                    navegador.</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="servicios" class="py-32 px-6 flex flex-col items-center">
+        <section id="servicios" class="py-12 px-6 flex flex-col items-center">
             <div class="max-w-5xl w-full">
                 <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div class="max-w-2xl">
@@ -380,41 +439,118 @@
                     </a>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="flat-card md:col-span-2 flex-row items-center gap-8">
-                        <i data-lucide="code-2" class="text-[#0071e3] w-16 h-16 flex-shrink-0"></i>
-                        <div>
-                            <h3 class="text-2xl font-semibold mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">Desarrollo
-                                Software.</h3>
-                            <p class="text-[#86868b] text-lg">
-                                Aplicaciones a medida y sistemas web escalables utilizando tecnologías modernas y diseño
-                                premium.
-                            </p>
-                        </div>
-                    </div>
+                <!-- Contenedor Carrusel Netflix Servicios -->
+                <div class="relative group w-full">
+                    <!-- Botón Izquierdo -->
+                    <button onclick="scrollCarousel('servicios-carousel', -1)"
+                        class="absolute -left-5 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-black/60 hover:bg-white dark:hover:bg-black text-black dark:text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hidden md:flex items-center justify-center backdrop-blur-md border border-black/10 dark:border-white/10 shadow-xl hover:scale-110">
+                        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                    </button>
+                    <!-- Botón Derecho -->
+                    <button onclick="scrollCarousel('servicios-carousel', 1)"
+                        class="absolute -right-5 top-1/2 -translate-y-1/2 z-10 bg-white/80 dark:bg-black/60 hover:bg-white dark:hover:bg-black text-black dark:text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hidden md:flex items-center justify-center backdrop-blur-md border border-black/10 dark:border-white/10 shadow-xl hover:scale-110">
+                        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                    </button>
 
-                    <div class="flat-card md:col-span-1 justify-center text-center">
-                        <i data-lucide="message-circle" class="text-[#0071e3] mx-auto mb-4 w-12 h-12"></i>
-                        <h3 class="text-2xl font-semibold mb-2 text-[#1d1d1f] dark:text-[#f5f5f7]">Menú WhatsApp.</h3>
-                        <p class="text-[#86868b] text-lg">
-                            Automatización inteligente basada en JSON.
-                        </p>
-                    </div>
-
-                    <div
-                        class="flat-card md:col-span-3 bg-white dark:bg-[#1c1c1e] shadow-xl border-gray-100 dark:border-[#2d2d2e]">
-                        <div class="flex justify-between items-start mb-6">
-                            <i data-lucide="layout" class="text-[#0071e3] w-12 h-12"></i>
-                            <span
-                                class="text-xs font-bold tracking-widest uppercase text-[#0071e3] bg-blue-50 dark:bg-blue-900/20 px-3 py-1 rounded-full">Diseño
-                                UI/UX</span>
+                    <!-- Carrusel -->
+                    <div id="servicios-carousel"
+                        class="flex flex-nowrap overflow-x-auto snap-x snap-mandatory gap-6 w-full pb-6 no-scrollbar px-6 scroll-smooth"
+                        style="-webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent); mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);">
+                        <!-- Tarjeta Desarrollo Software -->
+                        <div
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg dark:border dark:border-[#2d2d2e]">
+                            <img src="/src/image/service_software.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="Desarrollo Software">
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-left">
+                                <h3 class="text-3xl font-semibold mb-2 text-white">Desarrollo Software.</h3>
+                                <p class="text-gray-200 text-lg max-w-lg">Aplicaciones a medida y sistemas web
+                                    escalables utilizando tecnologías modernas y diseño premium.</p>
+                            </div>
                         </div>
-                        <h3 class="text-3xl font-semibold mb-4 text-[#1d1d1f] dark:text-[#f5f5f7]">Web Personalizada
-                            Premium.</h3>
-                        <p class="text-[#86868b] text-xl max-w-3xl leading-relaxed">
-                            Landing pages de alto impacto optimizadas para conversión, velocidad y un diseño que cautiva
-                            a tus clientes desde el primer segundo.
-                        </p>
+                        <!-- Tarjeta Menú WhatsApp -->
+                        <div
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg dark:border dark:border-[#2d2d2e]">
+                            <img src="/src/image/service_whatsapp.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="Menú WhatsApp">
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-left">
+                                <h3 class="text-3xl font-semibold mb-2 text-white">Menú WhatsApp.</h3>
+                                <p class="text-gray-200 text-lg">Automatización inteligente basada en JSON.</p>
+                            </div>
+                        </div>
+                        <!-- Tarjeta Web Personalizada Premium -->
+                        <div
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg dark:border dark:border-[#2d2d2e]">
+                            <img src="/src/image/service_webdesign.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="Web Personalizada Premium">
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-end text-left">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span
+                                        class="text-xs font-bold tracking-widest uppercase text-white bg-[#0071e3] px-3 py-1 rounded-full">Diseño
+                                        UI/UX</span>
+                                </div>
+                                <h3 class="text-4xl font-semibold mb-4 text-white">Web Premium.</h3>
+                                <p class="text-gray-200 text-xl max-w-3xl leading-relaxed">Landing pages de alto impacto
+                                    optimizadas para conversión, velocidad y un diseño que cautiva a tus clientes desde
+                                    el primer segundo.</p>
+                            </div>
+                        </div>
+
+                        <!-- Protocolo NFC -->
+                        <div
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg border dark:border-[#2d2d2e] block">
+                            <img src="/src/image/service_nfc.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="Protocolo NFC">
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-left">
+                                <div class="mb-4"><i data-lucide="rss" class="text-white w-10 h-10"></i></div>
+                                <h3 class="text-3xl font-semibold mb-2 text-white">Protocolo NFC.</h3>
+                                <p class="text-gray-200 text-lg">Implementación de protocolos NDEF para tarjetas
+                                    digitales y reseñas físicas inteligentes.</p>
+                            </div>
+                        </div>
+
+                        <!-- SEO Local -->
+                        <div
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg border dark:border-[#2d2d2e] block">
+                            <img src="/src/image/service_seo.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="SEO Local">
+                            <div class="absolute inset-0 bg-black/50"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-left">
+                                <div class="mb-4"><i data-lucide="map-pin" class="text-white w-10 h-10"></i></div>
+                                <h3 class="text-3xl font-semibold mb-2 text-white">SEO Local.</h3>
+                                <p class="text-gray-200 text-lg">Optimización de perfiles comerciales y metadatos
+                                    geográficos.</p>
+                            </div>
+                        </div>
+
+                        <!-- Correos Corp -->
+                        <div
+                            class="relative rounded-[32px] overflow-hidden flex-shrink-0 w-[85vw] md:w-[400px] snap-center group h-[400px] shadow-lg border dark:border-[#2d2d2e] block">
+                            <img src="/src/image/service_mail.webp"
+                                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                                alt="Correos Corp">
+                            <div class="absolute inset-0 bg-black/70"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+                            <div class="absolute inset-0 p-8 md:p-10 flex flex-col justify-end text-left">
+                                <div class="mb-4"><i data-lucide="mail" class="text-white w-10 h-10"></i></div>
+                                <h3 class="text-3xl font-semibold mb-2 text-white">Correos Corp.</h3>
+                                <p class="text-gray-200 text-lg">Configuración de registros MX, SPF y DKIM para
+                                    entregabilidad profesional y seguridad.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -439,6 +575,15 @@
     </footer>
 
     <script>
+        // Función para desplazar los carruseles (estilo Netflix)
+        function scrollCarousel(id, direction) {
+            const container = document.getElementById(id);
+            if (!container) return;
+            // Scroll el ancho de la tarjeta + gap (aprox 424px) o ajustar según dispositivo
+            const scrollAmount = window.innerWidth > 768 ? 424 : window.innerWidth * 0.85 + 24;
+            container.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+        }
+
         lucide.createIcons();
 
         // Inicializar iconos
